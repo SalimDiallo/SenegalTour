@@ -1,0 +1,117 @@
+{
+  "menu": {
+    "home": "Accueil",
+    "destination": "Destinations",
+    "contact": "Nous Contactez"
+  },
+  "common": {
+    "more": "Voir Plus",
+    "discover": "Decouvir",
+    "from": "A partir de ",
+    "person": "par personne",
+    "price":"Prix",
+    "comment": "Commenter",
+    "reviews": "Commentaires",
+    "send": "Envoyer",
+    "name": "Nom",
+    "message":"Vootre message"
+  },
+  "home": {
+    "welcome": "Un voyage inoubliable, un accompagnement sans frontières Bienvenue au  ",
+    "visitor": "Visiteurs / an",
+    "attraction": "Attractions touristiques",
+    "culture": "Cultures",
+    "sections": {
+      "destinations": {
+        "title": "Quelques destinations pour vous au Sénégal"
+      },
+      "news": {
+        "title": "Les dernières recommandations",
+        "description": "nous vous proposons ces recommandations finales pour vous assurer que votre voyage soit fluide, enrichissant et inoubliable"
+      },
+      "whyme": {
+        "title": "Pourquoi nous ?",
+        "description": "Découvrez le Sénégal à travers nos yeux: Pourquoi choisir le Sénégal Premium Tour pour votre voyage inoubliable",
+        "expertise": {
+          "title": "Savoir-faire inégalé :",
+          "description": "Notre équipe chevronnée possède une compréhension inégalée des subtilités du Sénégal. Avec des années d'exploration et de connexion, nous livrons une rencontre immersive que seuls de vrais experts peuvent orchestrer."
+        },
+        "mastery": {
+          "title": "Maîtrise transparente:",
+          "description": "Votre voyage mérite la perfection à chaque étape. De la planification méticuleuse à l'exécution sans faille, nous concevons magistralement chaque détail pour garantir que votre exploration du Sénégal se déroule de manière transparente."
+        },
+        "tailored": {
+          "title": "Adapter à vous",
+          "description": "Il n'y a pas deux voyageurs qui se ressemblent, et leurs voyages ne devraient pas l'être non plus. Nous organisons des expériences qui correspondent à vos passions, vos préférences et vos rêves, en veillant à ce que votre séjour au Sénégal soit exactement comme vous l'envisagez."
+        },
+        "reimagined": {
+          "title": "Un voyage réinventé",
+          "description": "A travers notre objectif, la magie du Sénégal est magnifiée. Laissez-nous être votre guide vers les histoires captivantes, les joyaux cachés et les interactions locales qui redéfiniront à jamais votre perception du voyage."
+        }
+      },
+      "carousselA": {
+        "title": "Voyagez au cœur du Sénégal, laissez-vous envoûter par sa richesse culturelle"
+      },
+      "topRaison": {
+        "title": "Top Raison de visiter le Sénégal",
+         "food": {
+          "title": "Nourriture",
+          "description": "Savourez les saveurs vibrantes du Sénégal avec sa cuisine ouest-africaine riche et aromatique."
+        },
+        "nature": {
+          "title": "Nature",
+          "description": "Belle nature."
+        },
+        "people": {
+          "title": "Belles Rencontres",
+          "description": "Un peuple Un but Une foi."
+        },
+        "discover": {
+          "title": "Decouvertes",
+          "description": "Découvrez le Sénégal (place de l'indépendance, palais présidentiel, parlement, cathédrale de Dakar, monument de la renaissance africaine, village artisanal de soumbedioune, marché de Kermel...)"
+        }
+      },
+      "experiencea": {
+        "title": "QUI NOUS VISITE ?",
+        "description": "nous accueillons tous les types de voyageurs francophones et anglophones du monde entier quel que soit leur budget. Nous nous concentrons sur la satisfaction de nos clients qui est plus importante que toute autre chose."
+      },
+      "top": {
+        "title": "Meilleurs circuits",
+        "description": "Destinations les plus visitées"
+
+      },
+      "reviews": {
+        "title": "Nos clients disent !!!"
+      },
+      "experienceb": {
+        "title": "QUE FAIRE ICI ?",
+        "description": "nous vous présenterons notre patrimoine culturel et les lieux d'intérêt les plus beaux et les plus spectaculaires du sénégal. nous vous offrirons une vue et une expérience du sénégal que seules les populations locales connaîtraient. Nous vous permettrons de vous impliquer profondément et de participer à nos quelques célébrations culturelles qui vous aideront à découvrir la connaissance des coutumes locales."
+      }
+    }
+  },
+  "search": {
+    "title": "Titre",
+    "price": "Prix Max",
+    "city": "Ville",
+  "submit":"Rechercher"
+  },
+  "footer": {
+    "description": "Bienvenue au Sénégal, où la générosité de la nature rencontre l'hospitalité du cœur, offrant aux touristes un voyage authentique et inoubliable.",
+    "copyright": "Tous droits réservés"
+  },
+ "tour":{
+    "duration": "Durée",
+    "destination":"Destination",
+    "statut":"Statut",
+    "price": "Prix",
+    "book":"Réservez maintenant ou contactez pour plus d'informations",
+     "reviewMessagePlaceholder":"Laissez un message"
+   },
+  "tours":{
+    "title":"Toutes les destinations",
+    "search":{
+      "title": "Planifier votre voyage avec le meilleur conseiller Touristique",
+      "description":"Votre Voyage Notre Passion"
+    }
+  }
+}

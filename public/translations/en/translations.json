@@ -1,0 +1,116 @@
+{
+  "menu": {
+    "home": "Home",
+    "destination": "Destinations",
+    "contact": "Contact us"
+  },
+  "common": {
+    "more": "More",
+    "discover": "Discover",
+    "from": "From ",
+    "person": "per person",
+    "price":"Price",
+ "comment": "Comment",
+    "reviews": "Reviews",
+    "send": "Send Now",
+    "name": "Name",
+"message":"Your message"
+  },
+  "home": {
+    "welcome": "An unforgettable trip, support without borders Welcome to ",
+    "visitor": "Visitors / year",
+    "attraction": "Tourist attractions",
+    "culture": "Cultures",
+    "sections": {
+      "destinations": {
+        "title": "Some destinations for you in Senegal"
+      },
+      "news": {
+        "title": "The last recommendations",
+        "description": "we offer these final recommendations to ensure your journey is seamless, enriching, and unforgettable"
+      },
+      "whyme": {
+        "title": "Why us ?",
+        "description": "Discover Senegal Through Our Eyes: Why Choose Senegal Premium Tour for Your Unforgettable Journey",
+        "expertise": {
+          "title": "Unparalleled Expertise:",
+          "description": "Our seasoned team boasts an unmatched understanding of Senegal's intricacies. With years of exploration and connection, we deliver an immersive encounter that only true experts can orchestrate."
+        },
+        "mastery": {
+          "title": "Seamless Mastery:",
+          "description": "Your journey deserves perfection at every step. From meticulous planning to flawless execution, we masterfully craft each detail to ensure your Senegal exploration flows seamlessly."
+        },
+        "tailored": {
+          "title": "Tailored to You",
+          "description": "No two travelers are alike, and neither should their journeys be. We curate experiences that align with your passions, preferences, and dreams, ensuring your time in Senegal is precisely as you envision."
+        },
+        "reimagined": {
+          "title": "A Journey Reimagined",
+          "description": "Through our lens, Senegal's magic is magnified. Let us be your guide to the captivating stories, hidden gems, and local interactions that will forever redefine your perception of travel."
+        }
+      },
+      "carousselA": {
+        "title": "Travel to the heart of Senegal, let yourself be enchanted by its richness cultural"
+      },
+      "topRaison": {
+        "title": "Top Raison to visit Senegal",
+        "food": {
+          "title": "Food",
+          "description": "Savor the vibrant flavors of Senegal with its rich and aromatic West African cuisine."
+        },
+        "nature": {
+          "title": "Nature",
+          "description": "Beautifull Nature.."
+        },
+        "people": {
+          "title": "People",
+          "description": "One people One goal One faith."
+        },
+        "discover": {
+          "title": "Discover",
+          "description": "Discover Senegal (:Independance square, presidential palace, parlement House, the cathedral of Dakar,African renaissance monument ,soumbedioum craft village ,Kermel market...)"
+        }
+      },
+      "experiencea": {
+        "title": "WHO VISIT US ?",
+        "description": "we accommodate all types of french and english-speaking travelers from all around the globe regardless of their budgets. We focus on the satisfaction of our customers which is more important than anything else."
+      },
+      "top": {
+        "title": "Best Tours",
+        "description": "most visited destinations"
+      },
+      "reviews": {
+        "title": "Our Clients Say!!!"
+      },
+      "experienceb": {
+        "title": "WHAT TO DO HERE ?",
+        "description": "we will introduce you our cultural heritage and the most beautiful and spectacular places of interests of senegal .we will provide you with a view and experience of senegal that only local people would know. We will make it possible for you to get deeply involved and taking part in our some cultural celebrations that will help you to discover knowledge of local customs."
+      }
+    }
+  },
+  "search": {
+    "title": "Title",
+    "price": "Max Price",
+    "city": "City",
+    "submit":"Search"
+  },
+  "footer": {
+    "description": "Welcome to Senegal, where the generosity of nature meets the hospitality of the heart, offering tourists an authentic and unforgettable journey.",
+    "copyright": "All rights reserved"
+  },
+  "tour":{
+    "duration": "Duration",
+    "destination":"Destination",
+    "statut":"Statut",
+    "price": "Price",
+    "book":"Book Now Or Contact for More Information",
+   "reviewMessagePlaceholder":"Your Review"
+   },
+  "tours":{
+    "title":"All Destinations",
+    "search":{
+      "title": "Plan your trip with the best Tourist Advisor",
+      "description":"Your Journey Our Passion"
+    }
+  }
+}
