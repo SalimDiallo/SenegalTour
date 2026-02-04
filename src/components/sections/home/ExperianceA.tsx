@@ -7,34 +7,35 @@ import { useTranslation } from "react-i18next";
 const ExperianceA = () => {
   const { t } = useTranslation("en");
   return (
-    <section className="my-28 mx-6 overflow-hidden">
-      <div className="max-w-6xl mx-auto my-4 bg-white h-84 bg-covers">
-        <div className="grid md:grid-cols-2 gap-10">
+    <section className="py-16 bg-white">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
           <div
             data-aos="fade-right"
-            data-aos-offset="200"
-            data-aos-easing="ease-in-sine"
+            data-aos-offset="150"
+            data-aos-easing="ease-out"
           >
-            {" "}
             <Image
               src={"/assets/images/people.jpeg"}
-              alt={"Why Visit Senegal around the senegal premium tour agency "}
-              width={200}
-              height={200}
-              className="w-full h-full rounded-md"
+              alt={"Expériences culturelles au Sénégal"}
+              width={600}
+              height={500}
+              className="w-full h-80 object-cover rounded-2xl"
             />
           </div>
 
           <div
-            className="p-4"
             data-aos="fade-left"
-            data-aos-offset="500"
-            data-aos-duration="500"
+            data-aos-offset="150"
+            data-aos-duration="600"
           >
-            <h1 className="text-2xl font-bold mb-6">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-0.5 bg-cyan-500 rounded-full"></div>
+            </div>
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-3">
               {t("home.sections.experiencea.title")}
             </h1>
-            <p className="mb-5">{t("home.sections.experiencea.description")}</p>
+            <p className="text-sm text-gray-500 leading-relaxed mb-6">{t("home.sections.experiencea.description")}</p>
             <Button title={t("common.discover")} href={"/tours"} />
           </div>
         </div>

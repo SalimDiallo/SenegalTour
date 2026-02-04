@@ -6,37 +6,31 @@ import { FaWhatsapp } from "react-icons/fa";
 
 const Annonce = () => {
   return (
-    <div className="bg-black">
-      <div className="max-w-6xl mx-auto flex items-center  justify-between   text-white">
-        {/* lefft */}
-        <div className="sm:flex justify-evenly  items-center max-sm:mx-auto ml-4 text-sm gap-4 text-center">
-          <div className="flex items-center gap-1 pl-2">
-            <Phone size={14} className="w-7 ml-3" />
-            <a target={"_blank"} href="tel:+221772370789<">
-              +221 77 237 07 89
-            </a>
-          </div>
-          <div className="flex items-center gap-1 mx-auto">
-            <Mail size={14} className="w-7" />
-            <a target={"_blank"} href="mailto:senegalpremiumtour@gmail.com">
-              senegalpremiumtour@gmail.com
-            </a>
-          </div>
+    <div className="bg-gray-900">
+      <div className="max-w-6xl mx-auto flex items-center justify-between text-white px-4 py-2">
+        {/* left */}
+        <div className="hidden sm:flex items-center gap-6 text-xs text-gray-300">
+          <a target={"_blank"} href="tel:+221772370789" className="flex items-center gap-1.5 hover:text-white transition-colors">
+            <Phone size={12} />
+            <span>+221 77 237 07 89</span>
+          </a>
+          <span className="text-gray-600">|</span>
+          <a target={"_blank"} href="mailto:senegalpremiumtour@gmail.com" className="flex items-center gap-1.5 hover:text-white transition-colors">
+            <Mail size={12} />
+            <span>senegalpremiumtour@gmail.com</span>
+          </a>
         </div>
-        {/* rigth */}
-        <div className="flex items-center w-fit max-sm:mx-auto bg-black h-full py-3 px-3 bg-opacity-20">
-          {/* <div className="px-3">
-            <Facebook size={14} className="w-7" />
-          </div> */}
+        {/* right */}
+        <div className="flex items-center gap-3 ml-auto sm:ml-0">
           <Link
             target={"_blank"}
             href="https://www.instagram.com/trip.senegal"
-            className="px-3"
+            className="text-gray-400 hover:text-white transition-colors"
           >
-            <Instagram size={14} className="w-7" />
+            <Instagram size={14} />
           </Link>
-          <Link target={"_blank"} href="tel:+221772370789" className="px-3">
-            <FaWhatsapp size={14} className="w-7" />
+          <Link target={"_blank"} href="tel:+221772370789" className="text-gray-400 hover:text-white transition-colors">
+            <FaWhatsapp size={14} />
           </Link>
         </div>
       </div>

@@ -5,66 +5,43 @@ import { useTranslation } from "react-i18next";
 
 const WhyMe = () => {
   const { t } = useTranslation("en");
+  const features = [
+    { icon: <TrendingUp size={20} />, titleKey: "home.sections.whyme.expertise.title", descKey: "home.sections.whyme.expertise.description" },
+    { icon: <Lightbulb size={20} />, titleKey: "home.sections.whyme.mastery.title", descKey: "home.sections.whyme.mastery.description" },
+    { icon: <UserCheck size={20} />, titleKey: "home.sections.whyme.tailored.title", descKey: "home.sections.whyme.tailored.description" },
+    { icon: <BrainCog size={20} />, titleKey: "home.sections.whyme.reimagined.title", descKey: "home.sections.whyme.reimagined.description" },
+  ];
+
   return (
-    <section className="bg-white dark:bg-gray-900">
-      <div className="py-8 px-4 mx-auto max-w-6xl sm:py-16 lg:px-6">
-        <div className="max-w-screen-md mb-8 lg:mb-16">
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+    <section className="bg-white py-16">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-2xl mb-10">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-10 h-0.5 bg-cyan-500 rounded-full"></div>
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
             {t("home.sections.whyme.title")}
           </h2>
-          <p className="text-gray-500 sm:text-xl dark:text-gray-400">
+          <p className="text-gray-500 text-sm mt-2 leading-relaxed">
             {t("home.sections.whyme.description")}
           </p>
         </div>
-        <div className="space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0">
-          {/* grid  1 */}
-          <div className="bg-sky-200 bg-opacity-20 p-4  hover:shadow-md hover:shadow-sky-300 rounded-md">
-            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-              <TrendingUp />
+        <div className="grid md:grid-cols-2 gap-6">
+          {features.map((f, i) => (
+            <div key={i} className="flex gap-4 p-5 rounded-xl border border-gray-100 hover:border-cyan-200 bg-gray-50 hover:bg-white transition-all duration-300">
+              <div className="flex-shrink-0 w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center text-cyan-600">
+                {f.icon}
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-gray-800 mb-1">
+                  {t(f.titleKey)}
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  {t(f.descKey)}
+                </p>
+              </div>
             </div>
-            <h3 className="mb-2 text-xl font-bold dark:text-white">
-              {t("home.sections.whyme.expertise.title")}
-            </h3>
-            <p className="text-gray-500 dark:text-gray-400">
-              {t("home.sections.whyme.expertise.description")}
-            </p>
-          </div>
-          {/* grid 2 */}
-          <div className="bg-sky-200 bg-opacity-20  hover:shadow-md hover:shadow-sky-300  p-4 rounded-md">
-            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-              <Lightbulb />
-            </div>
-            <h3 className="mb-2 text-xl font-bold dark:text-white">
-              {t("home.sections.whyme.mastery.title")}
-            </h3>
-            <p className="text-gray-500 dark:text-gray-400">
-              {t("home.sections.whyme.mastery.description")}
-            </p>
-          </div>
-          {/* grid 3 */}
-          <div className="bg-sky-200 bg-opacity-20  hover:shadow-md hover:shadow-sky-300 p-4 rounded-md">
-            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-              <UserCheck />
-            </div>
-            <h3 className="mb-2 text-xl font-bold dark:text-white">
-              {t("home.sections.whyme.tailored.title")}
-            </h3>
-            <p className="text-gray-500 dark:text-gray-400">
-              {t("home.sections.whyme.tailored.description")}
-            </p>
-          </div>
-          {/* grid  4 */}
-          <div className="bg-sky-200 bg-opacity-20  hover:shadow-md hover:shadow-sky-300 p-4 rounded-md">
-            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-              <BrainCog />
-            </div>
-            <h3 className="mb-2 text-xl font-bold dark:text-white">
-              {t("home.sections.whyme.reimagined.title")}
-            </h3>
-            <p className="text-gray-500 dark:text-gray-400">
-              {t("home.sections.whyme.reimagined.description")}
-            </p>
-          </div>
+          ))}
         </div>
       </div>
     </section>

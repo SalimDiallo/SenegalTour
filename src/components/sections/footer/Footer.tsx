@@ -9,74 +9,49 @@ import { FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="pt-28">
-      <section className="w-full bg-gray-100 py-16">
-        <div className="max-w-6xl mx-auto flex flex-col px-4">
-          <aside className="p-4 bg-white md:p-8 lg:p-10 dark:bg-gray-800">
-            <div className="mx-auto max-w-screen-xl text-center">
-              <div className="flex justify-center items-center text-3xl font-semibold text-gray-900 ">
-                <Image
-                  src="/logo.png"
-                  alt="logo du site"
-                  height={50}
-                  width={100}
-                />
-              </div>
-              <p className="my-6 text-gray-500 dark:text-gray-400">
-                <ContentTranslation title="footer.description" />
-              </p>
-
-              <ul className="flex flex-wrap justify-center items-center mb-6 font-bold text-gray-900 dark:text-white">
-                <li>
-                  <Link href="/" className="mr-4 hover:underline md:mr-6 ">
-                    <ContentTranslation title="menu.home" />
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/tours" className="mr-4 hover:underline md:mr-6">
-                    <ContentTranslation title="menu.destination" />
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    target={"_blank"}
-                    href="tel:+221772370789"
-                    className="mr-4 hover:underline md:mr-6"
-                  >
-                    <ContentTranslation title="menu.contact" />
-                  </Link>
-                </li>
-              </ul>
-              <ul className="flex flex-wrap justify-center items-center mb-6 text-gray-900 dark:text-white">
-                {/* <Link href="#" className="mr-4 hover:underline md:mr-6 ">
-                  <Facebook />
-                </Link> */}
-                <Link
-                  target={"_blank"}
-                  href="https://www.instagram.com/trip.senegal"
-                  className="mr-4 hover:underline md:mr-6 "
-                >
-                  <Instagram />
-                </Link>
-                <Link
-                  target={"_blank"}
-                  href="tel:+221772370789"
-                  className="mr-4 hover:underline md:mr-6 "
-                >
-                  <FaWhatsapp size={"28px"} />
-                </Link>
-              </ul>
-              <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-                © 2023-2024{" "}
-                <Link href="#" className="hover:underline">
-                  SenegalPremiumTour
-                </Link>
-                .<ContentTranslation title="footer.copyright" />.
-              </span>
+    <footer className="bg-gray-900 text-white">
+      <div className="max-w-6xl mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-3 gap-10">
+          {/* Logo + description */}
+          <div>
+            <Image src="/logo.png" alt="Senegal Premium Tour" height={44} width={90} className="mb-4" />
+            <p className="text-sm text-gray-400 leading-relaxed">
+              <ContentTranslation title="footer.description" />
+            </p>
+          </div>
+          {/* Navigation */}
+          <div>
+            <h4 className="text-sm font-semibold text-white mb-4 tracking-wide uppercase">Navigation</h4>
+            <ul className="flex flex-col gap-2">
+              <li><Link href="/" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors"><ContentTranslation title="menu.home" /></Link></li>
+              <li><Link href="/tours" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors"><ContentTranslation title="menu.destination" /></Link></li>
+              <li><Link target={"_blank"} href="tel:+221772370789" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors"><ContentTranslation title="menu.contact" /></Link></li>
+            </ul>
+          </div>
+          {/* Contact */}
+          <div>
+            <h4 className="text-sm font-semibold text-white mb-4 tracking-wide uppercase">Contact</h4>
+            <p className="text-sm text-gray-400 mb-1">+221 77 237 07 89</p>
+            <p className="text-sm text-gray-400 mb-4">senegalpremiumtour@gmail.com</p>
+            <div className="flex items-center gap-3">
+              <Link target={"_blank"} href="https://www.instagram.com/trip.senegal" className="text-gray-400 hover:text-cyan-400 transition-colors">
+                <Instagram size={18} />
+              </Link>
+              <Link target={"_blank"} href="tel:+221772370789" className="text-gray-400 hover:text-cyan-400 transition-colors">
+                <FaWhatsapp size={18} />
+              </Link>
             </div>
-          </aside>
+          </div>
         </div>
-      </section>
+      </div>
+      {/* Bottom bar */}
+      <div className="border-t border-gray-800">
+        <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <span className="text-xs text-gray-500">
+            © 2023–2024 SenegalPremiumTour. <ContentTranslation title="footer.copyright" />.
+          </span>
+        </div>
+      </div>
     </footer>
   );
 };

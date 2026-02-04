@@ -13,51 +13,42 @@ const Search = () => {
   const { t } = useTranslation("en");
 
   return (
-    <section className="bg-[url('/assets/images/hero-image.png')] bg-cover h-[40rem] mb-20">
-      <div className="w-full h-full flex bg-black bg-opacity-50">
-        <form className="max-w-5xl mx-auto flex flex-col items-center justify-center w-fit ">
-          <h1 className=" text-white py-2 px-2 italic text-4xl font-light text-center  leading-[3rem]">
-            <ContentTranslation title="tours.search.title" />
-          </h1>
-
-          <h3 className="text-sky-500  font-extrabold text-xl pb-6">
-            <ContentTranslation title="tours.search.description" />
-          </h3>
-          <div className="py-3 w-[80%]">
+    <section className="bg-[url('/assets/images/hero-image.png')] bg-cover bg-center relative">
+      <div className="absolute inset-0 bg-gray-900/55"></div>
+      <div className="relative z-10 max-w-3xl mx-auto px-4 py-20 flex flex-col items-center text-center">
+        <h1 className="text-white text-3xl md:text-4xl font-bold mb-2 leading-tight">
+          <ContentTranslation title="tours.search.title" />
+        </h1>
+        <p className="text-cyan-300 text-sm font-medium mb-8">
+          <ContentTranslation title="tours.search.description" />
+        </p>
+        <form className="w-full bg-white rounded-xl shadow-lg overflow-hidden">
+          <div className="flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-gray-100">
             <input
               onChange={(e) => setTitle(e.currentTarget.value)}
               type="text"
               placeholder={t("search.title")}
-              className="w-full p-2 rounded-md"
+              className="flex-1 outline-none px-4 py-3.5 text-sm text-gray-800 placeholder:text-gray-400"
             />
-          </div>
-          <div className="py-3 w-[80%]">
             <input
               onChange={(e) => setDescription(e.currentTarget.value)}
               type="number"
               placeholder={t("search.price")}
-              className="w-full p-2 rounded-md"
+              className="flex-1 outline-none px-4 py-3.5 text-sm text-gray-800 placeholder:text-gray-400"
             />
-          </div>
-          <div className="py-3 w-[80%]">
             <input
               onChange={(e) => setCity(e.currentTarget.value)}
               type="text"
               placeholder={t("search.city")}
-              className=" p-2 rounded-md w-full"
+              className="flex-1 outline-none px-4 py-3.5 text-sm text-gray-800 placeholder:text-gray-400"
             />
           </div>
-
-          <div className="py-3 w-[80%]">
-            <Link
-              href={`tours?title=${title}&description=${description}&city=${city}`}
-              placeholder="send"
-              type={"submit"}
-              className="bg-primary hover:bg-primary px-1 py-2  text-center text-white rounded-lg p-2 w-full text-lg"
-            >
-              {t("search.submit")}
-            </Link>
-          </div>
+          <Link
+            href={`tours?title=${title}&description=${description}&city=${city}`}
+            className="block w-full bg-cyan-500 hover:bg-cyan-600 transition-colors text-white text-sm font-semibold py-3 text-center"
+          >
+            {t("search.submit")}
+          </Link>
         </form>
       </div>
     </section>

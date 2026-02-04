@@ -70,19 +70,12 @@
   }
 }
 
-script .icon {
-  color: var(--primary-dark);
-}
-
 @layer base {
   body {
-    @apply font-[Poppins];
+    @apply font-[Poppins] text-gray-800;
   }
 
-  button {
-    @apply bg-cyan-400 hover:bg-cyan-600 px-2 py-1 text-base text-white rounded-md;
-  }
   .icon {
-    @apply text-2xl cursor-pointer;
+    @apply cursor-pointer;
   }
 }

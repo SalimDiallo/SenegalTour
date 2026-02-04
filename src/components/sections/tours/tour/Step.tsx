@@ -1,19 +1,19 @@
 import ContentTranslation from "@/app/tours/[tourId]/ContentTranslation";
 import React from "react";
 
-const Step = ({ title, content }: { title: string; content?: string }) => {
+const Step = ({ title, content, icon }: { title: string; content?: string; icon?: React.ReactNode }) => {
   return (
-    <div
-      data-aos="fade-up"
-      data-aos-easing="linear"
-      data-aos-duration="500"
-      className="my-5"
-    >
-      <h1 className="text-primary text-lg font-sm font-bold mb-2">
-        <ContentTranslation title={title} />
-      </h1>
-      <div className="text-base font-medium">
-        <p>{content}</p>
+    <div className="flex items-start gap-3 py-3 border-b border-gray-100 last:border-0">
+      {icon && (
+        <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-cyan-50 flex items-center justify-center text-cyan-600 mt-0.5">
+          {icon}
+        </div>
+      )}
+      <div>
+        <p className="text-xs text-gray-400 font-medium uppercase tracking-wide">
+          <ContentTranslation title={title} />
+        </p>
+        <p className="text-sm text-gray-800 font-semibold mt-0.5">{content}</p>
       </div>
     </div>
   );

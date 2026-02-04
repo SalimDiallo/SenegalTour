@@ -6,86 +6,38 @@ import { useTranslation } from "react-i18next";
 
 const TopRaison = () => {
   const { t } = useTranslation("en");
+  const items = [
+    { titleKey: "home.sections.topRaison.food.title", descKey: "home.sections.topRaison.food.description", src: "/assets/images/food/food1.jpeg", alt: "Cuisine sénégalaise" },
+    { titleKey: "home.sections.topRaison.discover.title", descKey: "home.sections.topRaison.discover.description", src: "/assets/images/Dakar.jpg", alt: "Découvrir Dakar" },
+    { titleKey: "home.sections.topRaison.people.title", descKey: "home.sections.topRaison.people.description", src: "/assets/images/people.jpeg", alt: "Peuples du Sénégal" },
+    { titleKey: "home.sections.topRaison.nature.title", descKey: "home.sections.topRaison.nature.description", src: "/assets/images/nature/nature2.jpeg", alt: "Nature du Sénégal" },
+  ];
+
   return (
-    <div className="mt-8  max-w-6xl mx-auto p-2">
-      <TitleSection title="home.sections.topRaison.title" />
-      <div className="grid sm:grid-cols-2 gap-2">
-        {/* grid 1 */}
-        <div className="relative ">
-          <div className="w-full  hover:opacity-0  h-full absolute bg-black transition-opacity bg-opacity-50 flex justify-center items-center">
-            <h1 className="text-white text-2xl font-extrabold">
-              {t("home.sections.topRaison.food.title")}
-            </h1>
-          </div>
-          <div className="w-full h-full opacity-0 hover:opacity-100 hover:z-50 px-6  absolute bg-black transition-opacity bg-opacity-90 flex justify-center items-center flex-col text-white">
-            <p>{t("home.sections.topRaison.food.description")}</p>
-          </div>
-          <Image
-            src={"/assets/images/food/food1.jpeg"}
-            alt={`Senegal Premuim Tour food image for section why to go in Senegal for the tourism`}
-            width={200}
-            height={200}
-            className="h-56 w-full object-cover rounded-lg"
-          />
-        </div>
-
-        {/* grid 2 */}
-        <div className="relative ">
-          <div className="w-full  hover:opacity-0  h-full absolute bg-black transition-opacity bg-opacity-50 flex justify-center items-center">
-            <h1 className="text-white text-2xl font-extrabold">
-              {t("home.sections.topRaison.discover.title")}
-            </h1>
-          </div>
-          <div className="w-full h-full opacity-0 hover:opacity-100 hover:z-50 px-6  absolute bg-black transition-opacity bg-opacity-90 flex justify-center items-center flex-col text-white">
-            <p>{t("home.sections.topRaison.discover.description")}</p>
-          </div>
-          <Image
-            src={"/assets/images/Dakar.jpg"}
-            alt={`Senegal Premuim Tour dakar image for section why to go in Senegal for the tourism`}
-            width={200}
-            height={200}
-            className="h-56 w-full object-cover rounded-lg"
-          />
-        </div>
-
-        {/* grid 3 */}
-        <div className="relative">
-          <div className="w-full  hover:opacity-0  h-full absolute bg-black transition-opacity bg-opacity-50 flex justify-center items-center">
-            <h1 className="text-white text-2xl font-extrabold">
-              {" "}
-              {t("home.sections.topRaison.people.title")}
-            </h1>
-          </div>
-          <div className="w-full h-full opacity-0 hover:opacity-100 hover:z-50 px-6  absolute bg-black transition-opacity bg-opacity-90 flex justify-center items-center flex-col text-white">
-            <p> {t("home.sections.topRaison.people.description")}</p>
-          </div>
-          <Image
-            src={"/assets/images/people.jpeg"}
-            alt={`Senegal Premuim Tour people of senegal image for section why to go in Senegal for the tourism`}
-            width={200}
-            height={200}
-            className="h-56 w-full object-cover rounded-lg"
-          />
-        </div>
-
-        {/* grid 4 */}
-        <div className="relative ">
-          <div className="w-full  hover:opacity-0  h-full absolute bg-black transition-opacity bg-opacity-50 flex justify-center items-center">
-            <h1 className="text-white text-2xl font-extrabold">
-              {" "}
-              {t("home.sections.topRaison.nature.title")}
-            </h1>
-          </div>
-          <div className="w-full h-full opacity-0 hover:opacity-100 hover:z-50 px-6  absolute bg-black transition-opacity bg-opacity-90 flex justify-center items-center flex-col text-white">
-            <p> {t("home.sections.topRaison.nature.description")}</p>
-          </div>
-          <Image
-            src={"/assets/images/nature/nature2.jpeg"}
-            alt={`Senegal Premuim Tour nuture image in Senegal for section why to go in Senegal for the tourism`}
-            width={200}
-            height={200}
-            className="h-56 w-full object-cover rounded-lg"
-          />
+    <div className="py-16 bg-gray-50">
+      <div className="max-w-6xl mx-auto px-4">
+        <TitleSection title="home.sections.topRaison.title" />
+        <div className="grid sm:grid-cols-2 gap-4">
+          {items.map((item, i) => (
+            <div key={i} className="group relative rounded-xl overflow-hidden">
+              <Image
+                src={item.src}
+                alt={item.alt}
+                width={600}
+                height={400}
+                className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              {/* Gradient permanent */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+              {/* Texte au bas — titre toujours visible */}
+              <div className="absolute bottom-0 left-0 right-0 p-5">
+                <h1 className="text-white font-semibold text-lg">{t(item.titleKey)}</h1>
+                <p className="text-white/60 text-xs mt-1 max-w-xs leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {t(item.descKey)}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

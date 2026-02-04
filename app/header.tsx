@@ -40,14 +40,14 @@ export default function Header() {
   };
 
   const navList = (
-    <div className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 w-">
+    <div className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-8">
       <Typography
         as="li"
         variant="small"
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link href={`/`} className="flex items-center">
+        <Link href={`/`} className="text-sm text-gray-600 hover:text-cyan-600 transition-colors font-medium tracking-wide">
           {t("menu.home")}
         </Link>
       </Typography>
@@ -57,8 +57,7 @@ export default function Header() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link href={`/tours`} className="flex items-center">
-          {" "}
+        <Link href={`/tours`} className="text-sm text-gray-600 hover:text-cyan-600 transition-colors font-medium tracking-wide">
           {t("menu.destination")}
         </Link>
       </Typography>
@@ -66,7 +65,7 @@ export default function Header() {
   );
 
   return (
-    <Navbar className="mx-auto max-w-6xl border-none  py-4 px-4 text-black lg:px-8 lg:py-4  items-center">
+    <Navbar className="mx-auto max-w-6xl border-none border-b border-gray-100 py-3 px-4 text-black lg:px-8 lg:py-4 items-center bg-white shadow-none">
       <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
         <Typography
           as="a"
@@ -94,7 +93,7 @@ export default function Header() {
             handleChange(e, isCLient);
           }}
           id="underline_select"
-          className="block py-2.5 px-2  text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+          className="block py-1.5 px-2 text-xs text-gray-500 bg-transparent border border-gray-200 rounded-md appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-cyan-400 focus:border-cyan-400"
         >
           <option
             selected={lang === "en"}
