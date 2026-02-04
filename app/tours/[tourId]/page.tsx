@@ -9,6 +9,7 @@ import { Clock, MapPin, DollarSign, CheckCircle } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
 import { TourCardA } from "../../../src/components/ui/TourCardA";
+import TourCircuit from "../../../src/components/sections/tours/tour/TourCircuit";
 
 export async function generateMetadata({
   params,
@@ -30,7 +31,7 @@ const TourDetailPage = ({ params }: { params: { tourId: string } }) => {
   if (!tour) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center px-4">
-        <h1 className="text-2xl font-bold text-gray-800 mb-2">Destination non trouvée</h1>
+        <h1 className="font-heading text-3xl font-semibold text-gray-800 mb-2">Destination non trouvée</h1>
         <p className="text-gray-500 text-sm mb-6">Cette destination n'existe pas ou a été supprimée.</p>
         <Link href="/tours" className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-medium px-5 py-2 rounded-md transition-colors">
           Retour aux destinations
@@ -64,7 +65,7 @@ const TourDetailPage = ({ params }: { params: { tourId: string } }) => {
           <span className="inline-block bg-cyan-500 text-white text-xs font-semibold px-3 py-1 rounded-full mb-3 tracking-wide uppercase">
             {tour.city}
           </span>
-          <h1 className="text-white text-3xl md:text-5xl font-bold leading-tight max-w-2xl">
+          <h1 className="font-heading text-white text-4xl md:text-6xl font-semibold leading-tight max-w-2xl">
             <ClientComponent fr={tour.titlefr} en={tour.title} />
           </h1>
         </div>
@@ -143,13 +144,18 @@ const TourDetailPage = ({ params }: { params: { tourId: string } }) => {
         </div>
       </div>
 
+      {/* ─── CIRCUIT / ITINÉRAIRE ─── */}
+      {tour.stops && tour.stops.length > 0 && (
+        <TourCircuit stops={tour.stops} />
+      )}
+
       {/* ─── RELATED TOURS ─── */}
       <section className="bg-gray-50 py-14">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-0.5 bg-cyan-500 rounded-full"></div>
           </div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">Autres destinations</h2>
+          <h2 className="font-heading text-3xl md:text-4xl font-semibold text-gray-800 mb-6">Autres destinations</h2>
           <div className="grid max-sm:grid-cols-1 max-lg:grid-cols-2 grid-cols-3 gap-5">
             {related.map((t) => (
               <TourCardA key={t.id} {...t} />

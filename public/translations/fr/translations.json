@@ -105,7 +105,9 @@
     "statut":"Statut",
     "price": "Prix",
     "book":"Réservez maintenant ou contactez pour plus d'informations",
-     "reviewMessagePlaceholder":"Laissez un message"
+    "reviewMessagePlaceholder":"Laissez un message",
+    "circuit": "Circuit du tour",
+    "circuitDescription": "Suivez le trajet étape par étape — voici chaque arrêt de votre voyage"
    },
   "tours":{
     "title":"Toutes les destinations",

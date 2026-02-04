@@ -79,7 +79,7 @@ const Hero = () => {
           initial={{ y: "1.5rem", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-4xl md:text-6xl font-bold max-sm:text-2xl leading-tight mb-3"
+          className="font-heading text-5xl md:text-7xl font-semibold max-sm:text-3xl leading-tight mb-3"
         >
           {t("home.welcome") as ReactNode}{" "}
           <span className="text-cyan-300">Sénégal</span>
@@ -146,7 +146,7 @@ const Hero = () => {
                   autoComplete="on"
                   value={title}
                   onChange={e => setTitle(e.currentTarget.value)}
-                  className="w-full outline-none text-gray-800 font-[Poppins] px-4 py-3.5 text-sm placeholder:text-gray-400"
+                  className="w-full outline-none text-gray-800 px-4 py-3.5 text-sm placeholder:text-gray-400"
                   type="text"
                   placeholder={t("search.title") || "Tour, activité..."}
                   name="title"
@@ -163,7 +163,7 @@ const Hero = () => {
                 <input
                   value={description}
                   onChange={e => setDescription(e.currentTarget.value)}
-                  className="w-full outline-none text-gray-800 font-[Poppins] px-4 py-3.5 pr-10 text-sm placeholder:text-gray-400"
+                  className="w-full outline-none text-gray-800 px-4 py-3.5 pr-10 text-sm placeholder:text-gray-400"
                   type="number"
                   min="0"
                   inputMode="numeric"
@@ -178,7 +178,7 @@ const Hero = () => {
                 <input
                   value={city}
                   onChange={e => setCity(e.currentTarget.value)}
-                  className="w-full outline-none text-gray-800 font-[Poppins] px-4 py-3.5 text-sm placeholder:text-gray-400"
+                  className="w-full outline-none text-gray-800 px-4 py-3.5 text-sm placeholder:text-gray-400"
                   type="text"
                   placeholder={t("search.city") || "Ville, région..."}
                   name="city"

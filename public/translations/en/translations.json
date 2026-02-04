@@ -104,7 +104,9 @@
     "statut":"Statut",
     "price": "Price",
     "book":"Book Now Or Contact for More Information",
-   "reviewMessagePlaceholder":"Your Review"
+    "reviewMessagePlaceholder":"Your Review",
+    "circuit": "Tour Circuit",
+    "circuitDescription": "Follow the route step by step — here is every stop on your journey"
    },
   "tours":{
     "title":"All Destinations",

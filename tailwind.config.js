@@ -17,8 +17,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        second: ["Brush Script MT"],
-        sans: ["Roboto Condensed", "Sofia Sans Condensed", "sans-serif"],
+        sans: ["Inter", "system-ui", "sans-serif"],
+        heading: ["Cormorant Garamond", "Georgia", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",

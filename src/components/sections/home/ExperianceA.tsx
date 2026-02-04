@@ -32,7 +32,7 @@ const ExperianceA = () => {
             <div className="flex items-center gap-3 mb-3">
               <div className="w-10 h-0.5 bg-cyan-500 rounded-full"></div>
             </div>
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-3">
+            <h1 className="font-heading text-3xl md:text-4xl font-semibold text-gray-800 mb-3">
               {t("home.sections.experiencea.title")}
             </h1>
             <p className="text-sm text-gray-500 leading-relaxed mb-6">{t("home.sections.experiencea.description")}</p>

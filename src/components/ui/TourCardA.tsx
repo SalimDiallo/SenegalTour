@@ -38,7 +38,7 @@ export const TourCardA = ({
         </div>
       </Link>
       <div className="p-5">
-        <h5 className="text-base font-semibold text-gray-800 mb-1.5 leading-snug">
+        <h5 className="font-heading text-lg font-semibold text-gray-800 mb-1.5 leading-snug">
           <ClientComponent fr={titlefr} en={title} />
         </h5>
         <p className="line-clamp-2 text-sm text-gray-500 mb-4">

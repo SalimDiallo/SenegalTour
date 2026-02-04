@@ -16,7 +16,7 @@ const Search = () => {
     <section className="bg-[url('/assets/images/hero-image.png')] bg-cover bg-center relative">
       <div className="absolute inset-0 bg-gray-900/55"></div>
       <div className="relative z-10 max-w-3xl mx-auto px-4 py-20 flex flex-col items-center text-center">
-        <h1 className="text-white text-3xl md:text-4xl font-bold mb-2 leading-tight">
+        <h1 className="font-heading text-white text-4xl md:text-5xl font-semibold mb-2 leading-tight">
           <ContentTranslation title="tours.search.title" />
         </h1>
         <p className="text-cyan-300 text-sm font-medium mb-8">

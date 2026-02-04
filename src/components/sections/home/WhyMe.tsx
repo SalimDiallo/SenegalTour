@@ -19,7 +19,7 @@ const WhyMe = () => {
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-0.5 bg-cyan-500 rounded-full"></div>
           </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
+          <h2 className="font-heading text-3xl md:text-4xl font-semibold text-gray-800">
             {t("home.sections.whyme.title")}
           </h2>
           <p className="text-gray-500 text-sm mt-2 leading-relaxed">
