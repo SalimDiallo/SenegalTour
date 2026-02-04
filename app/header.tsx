@@ -112,7 +112,7 @@ export default function Header() {
         </select>
 
         <div className="max-lg:hidden">
-          <Button href="tel:+221772370789" title={t("menu.contact")}></Button>
+          <Button href="/contact" title={t("menu.contact")}></Button>
         </div>
         <IconButton
           variant="text"
@@ -155,7 +155,7 @@ export default function Header() {
       <Collapse open={openNav}>
         <div className="container mx-auto">
           {navList}
-          <Button href="tel:+221772370789" title={t("menu.contact")}></Button>
+          <Button href="/contact" title={t("menu.contact")}></Button>
         </div>
       </Collapse>
     </Navbar>

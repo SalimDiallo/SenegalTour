@@ -25,7 +25,7 @@ const Footer = () => {
             <ul className="flex flex-col gap-2">
               <li><Link href="/" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors"><ContentTranslation title="menu.home" /></Link></li>
               <li><Link href="/tours" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors"><ContentTranslation title="menu.destination" /></Link></li>
-              <li><Link target={"_blank"} href="tel:+221772370789" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors"><ContentTranslation title="menu.contact" /></Link></li>
+              <li><Link href="/contact" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors"><ContentTranslation title="menu.contact" /></Link></li>
             </ul>
           </div>
           {/* Contact */}

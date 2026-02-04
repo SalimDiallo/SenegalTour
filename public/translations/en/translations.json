@@ -106,13 +106,51 @@
     "book":"Book Now Or Contact for More Information",
     "reviewMessagePlaceholder":"Your Review",
     "circuit": "Tour Circuit",
-    "circuitDescription": "Follow the route step by step — here is every stop on your journey"
+    "circuitDescription": "Follow the route step by step — here is every stop on your journey",
+    "reserveBtn": "Reserve this tour",
+    "contactBtn": "Contact the agency",
+    "reserveTitle": "Make a reservation"
    },
   "tours":{
     "title":"All Destinations",
     "search":{
       "title": "Plan your trip with the best Tourist Advisor",
       "description":"Your Journey Our Passion"
+    }
+  },
+  "form": {
+    "name": "Full Name",
+    "namePlaceholder": "Your full name",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "phone": "Phone",
+    "phonePlaceholder": "+221 XX XX XX XX",
+    "message": "Message",
+    "messagePlaceholder": "Write your message here...",
+    "persons": "Number of persons",
+    "date": "Travel date",
+    "reserve": "Reserve now",
+    "send": "Send message",
+    "sending": "Sending...",
+    "reservationFor": "Reservation for",
+    "errorNameMin": "Name must be at least 2 characters",
+    "errorEmail": "Invalid email address",
+    "errorPhone": "Phone number must be at least 6 characters",
+    "errorPersons": "At least 1 person required",
+    "errorDate": "Please choose a travel date",
+    "errorMessageMin": "Message must be at least 10 characters",
+    "errorGeneric": "An error occurred. Please try again.",
+    "successContact": "Message sent successfully!",
+    "successReservation": "Reservation submitted successfully!"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "We are here to help you plan the perfect trip to Senegal. Send us a message and we will get back to you shortly.",
+    "info": {
+      "title": "Get in touch",
+      "phone": "+221 77 237 07 89",
+      "email": "senegalpremiumtour@gmail.com",
+      "address": "Dakar, Senegal"
     }
   }
 }

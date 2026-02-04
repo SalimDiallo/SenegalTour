@@ -6,10 +6,10 @@ import ClientComponent from "../../../src/components/ClientComponent";
 import { toursData } from "../../../src/data/tours";
 import Step from "../../../src/components/sections/tours/tour/Step";
 import { Clock, MapPin, DollarSign, CheckCircle } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
 import { TourCardA } from "../../../src/components/ui/TourCardA";
 import TourCircuit from "../../../src/components/sections/tours/tour/TourCircuit";
+import ReservationCTA from "../../../src/components/tours/tour/ReservationCTA";
 
 export async function generateMetadata({
   params,
@@ -97,21 +97,7 @@ const TourDetailPage = ({ params }: { params: { tourId: string } }) => {
             </div>
 
             {/* CTA */}
-            <div className="flex flex-col gap-3">
-              <Link
-                href="tel:+221772370789"
-                className="inline-flex items-center justify-center gap-2.5 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold px-6 py-3 rounded-lg transition-colors"
-              >
-                <FaWhatsapp size={18} />
-                Réserver ce tour
-              </Link>
-              <Link
-                href="tel:+221772370789"
-                className="inline-flex items-center justify-center gap-2 border border-gray-200 text-gray-600 hover:border-cyan-300 hover:text-cyan-600 text-sm font-medium px-6 py-3 rounded-lg transition-colors"
-              >
-                Contacter l'agence
-              </Link>
-            </div>
+            <ReservationCTA tourId={tour.id} tourTitle={tour.title} tourTitleFr={tour.titlefr} />
           </div>
 
           {/* RIGHT — galerie d'images */}

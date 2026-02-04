@@ -14,7 +14,8 @@ const Search = () => {
 
   return (
     <section className="bg-[url('/assets/images/hero-image.png')] bg-cover bg-center relative">
-      <div className="absolute inset-0 bg-gray-900/55"></div>
+      {/* Overlay noir plus prononcé */}
+      <div className="absolute inset-0 bg-black/50"></div>
       <div className="relative z-10 max-w-3xl mx-auto px-4 py-20 flex flex-col items-center text-center">
         <h1 className="font-heading text-white text-4xl md:text-5xl font-semibold mb-2 leading-tight">
           <ContentTranslation title="tours.search.title" />
@@ -22,7 +23,7 @@ const Search = () => {
         <p className="text-cyan-300 text-sm font-medium mb-8">
           <ContentTranslation title="tours.search.description" />
         </p>
-        <form className="w-full bg-white rounded-xl shadow-lg overflow-hidden">
+        <form className="w-full bg-white/85 rounded-xl shadow-lg overflow-hidden backdrop-blur-sm">
           <div className="flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-gray-100">
             <input
               onChange={(e) => setTitle(e.currentTarget.value)}

@@ -107,13 +107,51 @@
     "book":"Réservez maintenant ou contactez pour plus d'informations",
     "reviewMessagePlaceholder":"Laissez un message",
     "circuit": "Circuit du tour",
-    "circuitDescription": "Suivez le trajet étape par étape — voici chaque arrêt de votre voyage"
+    "circuitDescription": "Suivez le trajet étape par étape — voici chaque arrêt de votre voyage",
+    "reserveBtn": "Réserver ce tour",
+    "contactBtn": "Contacter l'agence",
+    "reserveTitle": "Faire une réservation"
    },
   "tours":{
     "title":"Toutes les destinations",
     "search":{
       "title": "Planifier votre voyage avec le meilleur conseiller Touristique",
       "description":"Votre Voyage Notre Passion"
+    }
+  },
+  "form": {
+    "name": "Nom complet",
+    "namePlaceholder": "Votre nom complet",
+    "email": "Email",
+    "emailPlaceholder": "vous@exemple.com",
+    "phone": "Téléphone",
+    "phonePlaceholder": "+221 XX XX XX XX",
+    "message": "Message",
+    "messagePlaceholder": "Écrivez votre message ici...",
+    "persons": "Nombre de personnes",
+    "date": "Date de voyage",
+    "reserve": "Réserver maintenant",
+    "send": "Envoyer le message",
+    "sending": "Envoi en cours...",
+    "reservationFor": "Réservation pour",
+    "errorNameMin": "Le nom doit contenir au moins 2 caractères",
+    "errorEmail": "Adresse email invalide",
+    "errorPhone": "Le numéro doit contenir au moins 6 caractères",
+    "errorPersons": "Au moins 1 personne requise",
+    "errorDate": "Veuillez choisir une date de voyage",
+    "errorMessageMin": "Le message doit contenir au moins 10 caractères",
+    "errorGeneric": "Une erreur est survenue. Réessayez.",
+    "successContact": "Message envoyé avec succès !",
+    "successReservation": "Réservation envoyée avec succès !"
+  },
+  "contact": {
+    "title": "Nous contacter",
+    "description": "Nous sommes ici pour vous aider à planifier le voyage parfait au Sénégal. Envoyez-nous un message et nous vous répondrons rapidement.",
+    "info": {
+      "title": "Coordonnées",
+      "phone": "+221 77 237 07 89",
+      "email": "senegalpremiumtour@gmail.com",
+      "address": "Dakar, Sénégal"
     }
   }
 }
