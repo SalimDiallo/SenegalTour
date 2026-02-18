@@ -2,6 +2,7 @@
 
 import { supabase } from "./supabase";
 import { contactSchema, reservationSchema, ContactInput, ReservationInput } from "./schemas";
+import { sendContactEmail, sendReservationEmail } from "./email";
 
 // ─── Contact ──────────────────────────────────────────────
 export async function submitContact(data: ContactInput) {
@@ -21,6 +22,14 @@ export async function submitContact(data: ContactInput) {
     console.error("[submitContact] Supabase error:", JSON.stringify(error));
     return { success: false, error: "form.errorGeneric" };
   }
+
+  // Email de notification à l'admin (non-blocking)
+  sendContactEmail({
+    name: parsed.data.name,
+    email: parsed.data.email,
+    phone: parsed.data.phone || null,
+    message: parsed.data.message,
+  });
 
   return { success: true, error: null };
 }
@@ -47,6 +56,18 @@ export async function submitReservation(data: ReservationInput) {
     console.error("[submitReservation] Supabase error:", JSON.stringify(error));
     return { success: false, error: "form.errorGeneric" };
   }
+
+  // Email de notification à l'admin (non-blocking)
+  sendReservationEmail({
+    name: parsed.data.name,
+    email: parsed.data.email,
+    phone: parsed.data.phone,
+    tourTitle: parsed.data.tourTitle,
+    tourId: parsed.data.tourId,
+    numberOfPersons: parsed.data.numberOfPersons,
+    travelDate: parsed.data.travelDate,
+    message: parsed.data.message || null,
+  });
 
   return { success: true, error: null };
 }

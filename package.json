@@ -47,6 +47,7 @@
     "lucide-react": "^0.263.1",
     "mailgo": "^0.12.2",
     "next": "13.4.12",
+    "nodemailer": "^8.0.0",
     "postcss": "8.4.27",
     "react": "18.2.0",
     "react-countup": "^6.4.2",

@@ -1,12 +1,11 @@
 import React from "react";
 import { TourCardB } from "../../ui/TourCardB";
-
 import TitleSection from "../../ui/TitleSection";
 import { TourData } from "../../../data/tours";
 
 export const News = ({ tours }: { tours: TourData[] }) => {
   return (
-    <section className="bg-gray-50 py-16">
+    <section className="bg-gray-50/80 py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-4">
         <TitleSection
           title="home.sections.news.title"

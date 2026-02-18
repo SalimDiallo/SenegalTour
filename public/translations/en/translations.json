@@ -19,6 +19,7 @@
   "home": {
     "welcome": "An unforgettable trip, support without borders Welcome to ",
     "visitor": "Visitors / year",
+    "subtitle": "Explore the magic, culture, and diversity of Sénégal through unforgettable experiences.",
     "attraction": "Tourist attractions",
     "culture": "Cultures",
     "sections": {
@@ -141,7 +142,12 @@
     "errorMessageMin": "Message must be at least 10 characters",
     "errorGeneric": "An error occurred. Please try again.",
     "successContact": "Message sent successfully!",
-    "successReservation": "Reservation submitted successfully!"
+    "successReservation": "Reservation submitted successfully!",
+    "successContactTitle": "Message received!",
+    "successContactMessage": "Thank you for reaching out to us. Our team will review your message and get back to you as soon as possible via email or phone.",
+    "successReservationTitle": "Reservation confirmed!",
+    "successReservationMessage": "Thank you for your reservation. Our team will contact you very soon via email or phone to confirm all the details of your trip.",
+    "successBackToForm": "Send another message"
   },
   "contact": {
     "title": "Contact Us",

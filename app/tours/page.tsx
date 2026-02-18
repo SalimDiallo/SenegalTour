@@ -5,8 +5,9 @@ import ContentTranslation from "./[tourId]/ContentTranslation";
 import { toursData } from "../../src/data/tours";
 
 export const metadata: Metadata = {
-  title:
-    "All Destinations tourist for - Toutes les destinations touristiques Senegal ",
+  title: "Destinations — Senegal Premium Tour",
+  description:
+    "Découvrez toutes nos destinations touristiques au Sénégal. Excursions, circuits et expériences uniques à Dakar, Gorée, Saint-Louis et plus.",
 };
 
 const Tours = ({
@@ -16,20 +17,26 @@ const Tours = ({
 }) => {
   const tours = toursData;
 
-  const maxPrice = searchParams.description === "" ? "2000000" : searchParams.description;
+  const maxPrice =
+    searchParams.description === "" ? "2000000" : searchParams.description;
 
-  const hasFilter = searchParams.title || searchParams.city || searchParams.description;
+  const hasFilter =
+    searchParams.title || searchParams.city || searchParams.description;
 
   const filtered = hasFilter
     ? tours.filter(
         (tour) =>
-          tour.title.toLowerCase().includes((searchParams.title ?? "").toLowerCase()) &&
-          tour.city.toLowerCase().includes((searchParams.city ?? "").toLowerCase()) &&
+          tour.title
+            .toLowerCase()
+            .includes((searchParams.title ?? "").toLowerCase()) &&
+          tour.city
+            .toLowerCase()
+            .includes((searchParams.city ?? "").toLowerCase()) &&
           Number(tour.price) <= Number(maxPrice)
       )
     : tours;
 
-  // Termes de recherche pour l'affichage
+  // Search chips
   const chips = [
     searchParams.title && { label: searchParams.title },
     searchParams.city && { label: searchParams.city },
@@ -40,32 +47,43 @@ const Tours = ({
     <div>
       <Search />
 
-      <section className="py-14">
+      <section className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4">
           {/* Header */}
-          <div className="mb-8">
+          <div className="mb-10">
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-0.5 bg-cyan-500 rounded-full"></div>
+              <div className="w-12 h-[2px] bg-cyan-500 rounded-full" />
+              <span className="text-[11px] text-cyan-600 font-semibold tracking-[0.15em] uppercase">
+                Explorer
+              </span>
             </div>
             <h1 className="font-heading text-3xl md:text-4xl font-semibold text-gray-800">
               <ContentTranslation title="tours.title" />
             </h1>
 
-            {/* Chips de recherche */}
+            {/* Search chips */}
             {chips.length > 0 && (
-              <div className="flex flex-wrap items-center gap-2 mt-3">
-                <span className="text-xs text-gray-400">Résultats pour :</span>
+              <div className="flex flex-wrap items-center gap-2 mt-4">
+                <span className="text-[11px] text-gray-400 uppercase tracking-wide font-medium">
+                  Résultats pour :
+                </span>
                 {chips.map((chip, i) => (
-                  <span key={i} className="inline-block bg-cyan-50 text-cyan-700 text-xs font-medium px-2.5 py-1 rounded-full">
+                  <span
+                    key={i}
+                    className="inline-block bg-cyan-50 text-cyan-700 text-[11px] font-medium px-3 py-1.5 rounded-full"
+                  >
                     {chip.label}
                   </span>
                 ))}
-                <span className="text-xs text-gray-400 ml-1">— {filtered.length} destination{filtered.length !== 1 ? "s" : ""}</span>
+                <span className="text-[11px] text-gray-400 ml-1">
+                  — {filtered.length} destination
+                  {filtered.length !== 1 ? "s" : ""}
+                </span>
               </div>
             )}
           </div>
 
-          {/* Grille de tours */}
+          {/* Tours grid */}
           {filtered.length > 0 ? (
             <div className="grid max-sm:grid-cols-1 max-md:grid-cols-2 grid-cols-3 gap-5">
               {filtered.map((tour) => (
@@ -73,9 +91,19 @@ const Tours = ({
               ))}
             </div>
           ) : (
-            <div className="text-center py-20">
-              <p className="text-gray-400 text-sm">Aucune destination ne correspond à votre recherche.</p>
-              <a href="/tours" className="inline-block mt-4 text-cyan-600 text-sm font-medium hover:underline">Voir toutes les destinations</a>
+            <div className="text-center py-24">
+              <div className="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-5">
+                <span className="text-xl">🔍</span>
+              </div>
+              <p className="text-gray-400 text-sm mb-4">
+                Aucune destination ne correspond à votre recherche.
+              </p>
+              <a
+                href="/tours"
+                className="inline-flex items-center gap-2 text-cyan-600 text-sm font-medium hover:underline underline-offset-4"
+              >
+                Voir toutes les destinations
+              </a>
             </div>
           )}
         </div>

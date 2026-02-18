@@ -17,11 +17,11 @@ export default function Home() {
       <Destinations tours={toursData} />
       <News tours={toursData} />
       <WhyMe />
-      <CarrouselA tours={toursData} />
+       <CarrouselA tours={toursData} />
       <TopRaison />
-      <ExperianceA />
+       <ExperianceA />
       <Top tours={toursData} />
-      <ExperianceB />
+       <ExperianceB />
     </div>
   );
 }

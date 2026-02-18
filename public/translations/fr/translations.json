@@ -19,6 +19,7 @@
   "home": {
     "welcome": "Un voyage inoubliable, un accompagnement sans frontières Bienvenue au  ",
     "visitor": "Visiteurs / an",
+    "subtitle": "Explorez la magie, la culture et la diversité du Sénégal à travers des expériences inoubliable",
     "attraction": "Attractions touristiques",
     "culture": "Cultures",
     "sections": {
@@ -142,7 +143,12 @@
     "errorMessageMin": "Le message doit contenir au moins 10 caractères",
     "errorGeneric": "Une erreur est survenue. Réessayez.",
     "successContact": "Message envoyé avec succès !",
-    "successReservation": "Réservation envoyée avec succès !"
+    "successReservation": "Réservation envoyée avec succès !",
+    "successContactTitle": "Message bien reçu !",
+    "successContactMessage": "Merci de nous avoir contactés. Notre équipe va examiner votre message et vous répondre très rapidement par email ou par téléphone.",
+    "successReservationTitle": "Réservation confirmée !",
+    "successReservationMessage": "Merci pour votre réservation. Notre équipe va vous contacter très prochainement par email ou par téléphone pour confirmer tous les détails de votre voyage.",
+    "successBackToForm": "Envoyer un autre message"
   },
   "contact": {
     "title": "Nous contacter",

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { imgTourUrl } from "../../config/siteConfig";
 import { TourData } from "@/src/data/tours";
+import { ArrowUpRight, MapPin } from "lucide-react";
 
 export const TourCardB = ({ city, image, id, price, title }: TourData) => {
   const { t } = useTranslation("en");
@@ -12,25 +13,36 @@ export const TourCardB = ({ city, image, id, price, title }: TourData) => {
     <div
       data-aos="fade-up"
       data-aos-duration="800"
-      className="group relative rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
+      className="group relative rounded-2xl overflow-hidden aspect-[4/3]"
     >
-      <Link href={`/tours/${id}`}>
+      <Link href={`/tours/${id}`} className="block w-full h-full">
         <Image
           src={imgTourUrl(image)}
           alt={`Destination ${title} — Senegal Premium Tour`}
-          className="w-full object-cover md:h-[15rem] transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover img-zoom"
           width={600}
           height={400}
         />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent" />
+
+        {/* Content at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between">
+          <div>
+            <div className="flex items-center gap-1.5 mb-1">
+              <MapPin size={12} className="text-cyan-400" />
+              <h3 className="text-white font-semibold text-base">{city}</h3>
+            </div>
+            <span className="text-white/50 text-xs font-medium">
+              {t("common.from")}{" "}
+              <span className="text-white font-semibold">€{price}</span>
+            </span>
+          </div>
+          <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+            <ArrowUpRight size={16} className="text-white" />
+          </div>
+        </div>
       </Link>
-      {/* Gradient + info */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
-        <h1 className="text-white font-semibold text-sm">{city}</h1>
-        <span className="text-white text-xs font-medium bg-black/40 backdrop-blur-sm px-2.5 py-1 rounded-md">
-          {t("common.from")} €{price}
-        </span>
-      </div>
     </div>
   );
 };
