@@ -23,8 +23,8 @@ export async function submitContact(data: ContactInput) {
     return { success: false, error: "form.errorGeneric" };
   }
 
-  // Email de notification à l'admin (non-blocking)
-  sendContactEmail({
+  // Email de notification à l'admin
+  await sendContactEmail({
     name: parsed.data.name,
     email: parsed.data.email,
     phone: parsed.data.phone || null,
@@ -57,8 +57,8 @@ export async function submitReservation(data: ReservationInput) {
     return { success: false, error: "form.errorGeneric" };
   }
 
-  // Email de notification à l'admin (non-blocking)
-  sendReservationEmail({
+  // Email de notification à l'admin
+  await sendReservationEmail({
     name: parsed.data.name,
     email: parsed.data.email,
     phone: parsed.data.phone,

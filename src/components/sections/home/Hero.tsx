@@ -14,15 +14,6 @@ const SLIDER_IMAGES = [
   "/assets/images/Dakar.jpg",
 ];
 
-// Quick destination tags
-const DESTINATIONS = [
-  { name: "Dakar", emoji: "🏙️", color: "from-cyan-400/20 to-cyan-500/10", border: "border-cyan-400/20", hoverBg: "hover:bg-cyan-400/20" },
-  { name: "Gorée", emoji: "🏝️", color: "from-amber-400/20 to-amber-500/10", border: "border-amber-400/20", hoverBg: "hover:bg-amber-400/20" },
-  { name: "Saint-Louis", emoji: "🌊", color: "from-blue-400/20 to-blue-500/10", border: "border-blue-400/20", hoverBg: "hover:bg-blue-400/20" },
-  { name: "Saly", emoji: "☀️", color: "from-orange-400/20 to-orange-500/10", border: "border-orange-400/20", hoverBg: "hover:bg-orange-400/20" },
-  { name: "Casamance", emoji: "🌿", color: "from-emerald-400/20 to-emerald-500/10", border: "border-emerald-400/20", hoverBg: "hover:bg-emerald-400/20" },
-];
-
 const Hero = () => {
   const { t } = useTranslation("en");
   const [title, setTitle] = useState("");
@@ -78,9 +69,8 @@ const Hero = () => {
             />
           </motion.div>
         ))}
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-950/60 via-gray-900/40 to-gray-950/80 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-950/30 via-transparent to-transparent z-10" />
-        <div className="absolute inset-0 z-10" style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 65%, rgba(0,0,0,0.3) 0%, transparent 70%)' }} />
+        {/* Suppression des gradients et du radial */}
+        <div className="absolute inset-0 bg-black/50 z-10" />
       </div>
 
       {/* ===== CONTENT ===== */}
@@ -92,7 +82,7 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mb-2 sm:mb-3"
         >
-          <span className="inline-flex items-center gap-1.5 sm:gap-2 border border-white/15 text-white/70 text-[9px] sm:text-[10px] tracking-[0.15em] sm:tracking-[0.18em] uppercase px-3 sm:px-4 py-1 sm:py-1.5 rounded-full backdrop-blur-md bg-white/5">
+          <span className="inline-flex items-center gap-1.5 sm:gap-2 border border-white/15 text-white/70 text-[9px] sm:text-[10px] tracking-[0.15em] sm:tracking-[0.18em] uppercase px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-white/5">
             <Sparkles size={9} className="text-cyan-400" />
             Agence de Tourisme Premium
             <span className="w-1 h-1 rounded-full bg-cyan-400 animate-pulse" />
@@ -108,12 +98,9 @@ const Hero = () => {
         >
           {t("home.welcome") as ReactNode}{" "}
           <span className="relative inline-block">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500">
+            <span className="text-cyan-300">
               Sénégal
             </span>
-            <svg viewBox="0 0 200 10" className="absolute -bottom-0.5 sm:-bottom-1 left-0 w-full h-1.5 sm:h-2">
-              <path d="M2 7C40 2 80 2 100 5C120 8 160 3 198 7" fill="none" stroke="rgba(34,211,238,0.45)" strokeWidth="2" strokeLinecap="round" />
-            </svg>
           </span>
         </motion.h1>
 
@@ -122,12 +109,11 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mb-4 sm:mb-5 text-[11px] sm:text-xs md:text-sm font-light max-w-sm sm:max-w-md mx-auto text-white/50 leading-relaxed px-2"
+          className="mb-4 sm:mb-5 text-[11px] sm:text-xs md:text-sm font-light max-w-sm sm:max-w-md mx-auto text-white/70 leading-relaxed px-2"
         >
           {t("home.subtitle") ??
             "Explorez la magie, la culture et la diversité du Sénégal à travers des expériences inoubliables."}
         </motion.p>
-
 
         {/* ===== SEARCH BAR ===== */}
         <motion.form
@@ -142,14 +128,11 @@ const Hero = () => {
           role="search"
           aria-label={t("search.ariaLabel") || "Recherche de tours"}
         >
-          {/* Ambient glow */}
-          <div className="absolute -inset-3 sm:-inset-5 rounded-3xl bg-cyan-500/8 blur-2xl -z-10" />
-          <div className="absolute -inset-6 sm:-inset-8 rounded-3xl bg-black/15 blur-3xl -z-20" />
-
-          <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl shadow-black/20 overflow-hidden border border-white/80">
+          {/* Glow retiré */}
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg shadow-black/20 overflow-hidden border border-white/80">
             {/* Search bar header - desktop */}
             <div className="hidden sm:flex items-center gap-2 px-5 pt-3 pb-1">
-              <span className="text-[10px] text-gray-400 font-medium tracking-wide uppercase">
+              <span className="text-[10px] text-gray-500 font-medium tracking-wide uppercase">
                 Trouvez votre prochaine aventure
               </span>
             </div>
@@ -197,7 +180,7 @@ const Hero = () => {
                   focusedField === "price" ? "sm:bg-gray-50 sm:ring-1 sm:ring-amber-200/50" : ""
                 }`}
               >
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-50 to-amber-100 flex items-center justify-center flex-shrink-0 shadow-sm">
+                <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0 shadow-sm">
                   <DollarSign size={14} className="text-amber-500" />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -209,8 +192,8 @@ const Hero = () => {
                     onChange={(e) => setDescription(e.currentTarget.value)}
                     onFocus={() => setFocusedField("price")}
                     onBlur={() => setFocusedField(null)}
-                   className="w-full outline-none text-gray-700 text-[13px] placeholder:text-gray-300 font-medium bg-transparent border-1 border-gray-200 rounded-lg"
-                   type="number"
+                    className="w-full outline-none text-gray-700 text-[13px] placeholder:text-gray-300 font-medium bg-transparent border-1 border-gray-200 rounded-lg"
+                    type="number"
                     min="0"
                     inputMode="numeric"
                     pattern="[0-9]*"
@@ -219,7 +202,7 @@ const Hero = () => {
                     aria-label={t("search.price")}
                   />
                 </div>
-                <span className="text-[10px] font-bold text-gray-300 flex-shrink-0 bg-gray-100 px-1.5 py-0.5 rounded-md">
+                <span className="text-[10px] font-bold text-gray-400 flex-shrink-0 bg-gray-100 px-1.5 py-0.5 rounded-md">
                   €
                 </span>
               </div>
@@ -235,8 +218,8 @@ const Hero = () => {
                   focusedField === "city" ? "sm:bg-gray-50 sm:ring-1 sm:ring-emerald-200/50" : ""
                 }`}
               >
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-50 to-emerald-100 flex items-center justify-center flex-shrink-0 shadow-sm">
-                  <MapPin size={14} className="text-emerald-500" />
+                <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <MapPin size={14} className="text-emerald-600" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <label className="block text-[9px] font-semibold text-gray-400 uppercase tracking-wider mb-0.5">
@@ -267,7 +250,7 @@ const Hero = () => {
               <div className="flex items-center sm:pl-1 sm:pr-0.5">
                 <button
                   type="submit"
-                  className="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 active:scale-95 transition-all duration-300 px-5 sm:px-5 py-3 sm:py-0 sm:h-[52px] sm:rounded-xl flex items-center justify-center gap-2 group shadow-lg shadow-cyan-500/20"
+                  className="w-full sm:w-auto bg-cyan-600 hover:bg-cyan-700 active:scale-95 transition-all duration-300 px-5 sm:px-5 py-3 sm:py-0 sm:h-[52px] sm:rounded-xl flex items-center justify-center gap-2 group shadow-lg"
                   aria-label="Rechercher"
                 >
                   <AiOutlineSearch
@@ -301,14 +284,14 @@ const Hero = () => {
           ].map((stat, i) => (
             <React.Fragment key={i}>
               {i > 0 && (
-                <div className="w-px h-6 sm:h-8 bg-gradient-to-b from-transparent via-white/15 to-transparent" />
+                <div className="w-px h-6 sm:h-8 bg-gray-200" />
               )}
               <div className="flex flex-col items-center cursor-default">
                 <span className="text-white font-semibold text-base sm:text-lg md:text-xl tabular-nums tracking-tight">
                   <CountUp start={stat.start} end={stat.end} duration={3} />
                   <span className="text-cyan-400 font-bold">{stat.suffix}</span>
                 </span>
-                <span className="text-[8px] sm:text-[9px] md:text-[10px] text-white/35 font-medium tracking-[0.1em] uppercase mt-0.5">
+                <span className="text-[8px] sm:text-[9px] md:text-[10px] text-white/50 font-medium tracking-[0.1em] uppercase mt-0.5">
                   {stat.label}
                 </span>
               </div>

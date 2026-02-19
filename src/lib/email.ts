@@ -1,50 +1,111 @@
 import nodemailer from "nodemailer";
 
-// ─── Transport ───────────────────────────────────────────
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT || 587),
-  secure: false,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
+// ─── Transport ────────────────────────────────────────────
+function getTransporter() {
+  return nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT || 587),
+    secure: false,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  });
+}
 
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL!;
-const FROM = `Senegal Premium Tour <${process.env.SMTP_FROM}>`;
+function getAdminEmail() {
+  return process.env.ADMIN_EMAIL!;
+}
 
-// ─── Styles communes ──────────────────────────────────────
-const styles = {
-  wrapper: `font-family: 'Segoe UI', Arial, sans-serif; background: #f3f4f6; padding: 32px 16px; margin: 0; width: 100%;`,
-  card: `background: #ffffff; border-radius: 16px; max-width: 600px; margin: 0 auto; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08);`,
-  header: `background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); padding: 36px 32px; text-align: center;`,
-  headerTitle: `color: #ffffff; font-size: 24px; font-weight: 700; margin: 12px 0 0; letter-spacing: -0.5px;`,
-  headerSub: `color: rgba(255,255,255,0.85); font-size: 14px; margin: 8px 0 0;`,
-  body: `padding: 32px;`,
-  badge: `display: inline-block; background: #ecfeff; color: #0891b2; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-bottom: 20px; border: 1px solid #cffafe;`,
-  sectionTitle: `color: #374151; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin: 24px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #ecfeff;`,
-  row: `display: flex; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid #f3f4f6;`,
-  rowLabel: `color: #6b7280; font-size: 13px; font-weight: 600; width: 140px; flex-shrink: 0;`,
-  rowValue: `color: #1f2937; font-size: 13px; font-weight: 500;`,
-  messageBox: `background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px; margin: 16px 0; color: #374151; font-size: 13px; line-height: 1.6; font-style: italic;`,
-  linkBtn: `display: inline-block; background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); color: #ffffff; text-decoration: none; padding: 12px 28px; border-radius: 8px; font-size: 14px; font-weight: 600; margin: 8px 0;`,
-  footer: `background: #f9fafb; border-top: 1px solid #f3f4f6; padding: 24px 32px; text-align: center;`,
-  footerText: `color: #9ca3af; font-size: 12px; line-height: 1.6;`,
-  iconCircle: `display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.15); margin-bottom: 8px;`,
-};
+function getFrom() {
+  return `Senegal Premium Tour <${process.env.SMTP_FROM}>`;
+}
 
-// ─── Template : Notification Réservation ──────────────────
-function reservationHTML({
-  name,
-  email,
-  phone,
-  tourTitle,
-  tourId,
-  numberOfPersons,
-  travelDate,
-  message,
-}: {
+// ─── Base HTML ────────────────────────────────────────────
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+// const LOGO_URL = `${SITE_URL}/logo.png`;
+const LOGO_URL = `https://www.senegalpremiumtour.com/logo.png`;
+
+
+function baseTemplate(title: string, content: string) {
+  return `<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>${title}</title>
+</head>
+<body style="margin:0;padding:0;background:#f5f5f5;font-family:Arial,Helvetica,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
+    <tr>
+      <td align="center">
+        <table width="580" cellpadding="0" cellspacing="0" style="max-width:580px;width:100%;">
+
+          <!-- LOGO -->
+          <tr>
+            <td align="center" style="padding-bottom:24px;">
+              <img src="${LOGO_URL}" alt="Senegal Premium Tour" height="52" style="display:block;" />
+            </td>
+          </tr>
+
+          <!-- CARD -->
+          <tr>
+            <td style="background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e8e8;">
+
+              <!-- BANDE COULEUR HAUT -->
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="background:#1a1a1a;height:4px;"></td>
+                </tr>
+              </table>
+
+              <!-- CONTENU -->
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="padding:36px 40px;">
+                    ${content}
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- FOOTER -->
+          <tr>
+            <td align="center" style="padding-top:28px;">
+              <p style="margin:0;font-size:12px;color:#999999;line-height:1.6;">
+                Senegal Premium Tour &nbsp;&bull;&nbsp; senegalpremiumtour@gmail.com &nbsp;&bull;&nbsp; +221 77 237 07 89
+              </p>
+              <p style="margin:6px 0 0;font-size:11px;color:#bbbbbb;">
+                Notification automatique — merci de ne pas répondre à cet email.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+}
+
+// ─── Ligne de détail ──────────────────────────────────────
+function row(label: string, value: string) {
+  return `
+  <tr>
+    <td style="padding:10px 0;border-bottom:1px solid #f0f0f0;vertical-align:top;width:38%;">
+      <span style="font-size:12px;color:#888888;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">${label}</span>
+    </td>
+    <td style="padding:10px 0 10px 16px;border-bottom:1px solid #f0f0f0;vertical-align:top;">
+      <span style="font-size:14px;color:#1a1a1a;">${value}</span>
+    </td>
+  </tr>`;
+}
+
+// ─── Template : Réservation ───────────────────────────────
+function reservationHTML(data: {
   name: string;
   email: string;
   phone: string;
@@ -54,147 +115,91 @@ function reservationHTML({
   travelDate: string;
   message?: string | null;
 }) {
-  const dateFormatted = new Date(travelDate + "T00:00:00").toLocaleDateString("fr-FR", {
+  const dateFormatted = new Date(data.travelDate + "T00:00:00").toLocaleDateString("fr-FR", {
     weekday: "long",
     year: "numeric",
     month: "long",
     day: "numeric",
   });
 
-  const tourUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/tours/${tourId}`;
+  const tourUrl = `${SITE_URL}/tours/${data.tourId}`;
 
-  return `
-  <html>
-  <body style="${styles.wrapper}">
-    <div style="${styles.card}">
-      <!-- Header -->
-      <div style="${styles.header}">
-        <div style="${styles.iconCircle}">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-          </svg>
-        </div>
-        <h1 style="${styles.headerTitle}">Nouvelle Réservation</h1>
-        <p style="${styles.headerSub}">Un client a effectué une réservation</p>
-      </div>
+  const content = `
+    <!-- TITRE -->
+    <p style="margin:0 0 4px;font-size:11px;color:#888888;font-weight:600;text-transform:uppercase;letter-spacing:1px;">Nouvelle réservation</p>
+    <h1 style="margin:0 0 8px;font-size:22px;font-weight:700;color:#1a1a1a;">${data.tourTitle}</h1>
+    <p style="margin:0 0 32px;font-size:14px;color:#666666;">Un client vient d'effectuer une réservation.</p>
 
-      <!-- Body -->
-      <div style="${styles.body}">
-        <div style="${styles.badge}">📍 Réservation de tour</div>
+    <!-- TABLE TOUR -->
+    <p style="margin:0 0 8px;font-size:11px;color:#888888;font-weight:600;text-transform:uppercase;letter-spacing:1px;">Détails du tour</p>
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+      ${row("Date de voyage", dateFormatted)}
+      ${row("Nombre de personnes", `${data.numberOfPersons} personne${data.numberOfPersons > 1 ? "s" : ""}`)}
+    </table>
 
-        <!-- Infos tour -->
-        <div style="${styles.sectionTitle}">Détails du tour</div>
-        <div style="${styles.row}">
-          <span style="${styles.rowLabel}">Tour</span>
-          <span style="${styles.rowValue}"><strong>${tourTitle}</strong></span>
-        </div>
-        <div style="${styles.row}">
-          <span style="${styles.rowLabel}">Date voyage</span>
-          <span style="${styles.rowValue}">${dateFormatted}</span>
-        </div>
-        <div style="${styles.row}">
-          <span style="${styles.rowLabel}">Personnes</span>
-          <span style="${styles.rowValue}">${numberOfPersons} personne${numberOfPersons > 1 ? "s" : ""}</span>
-        </div>
+    <!-- TABLE CLIENT -->
+    <p style="margin:0 0 8px;font-size:11px;color:#888888;font-weight:600;text-transform:uppercase;letter-spacing:1px;">Informations client</p>
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:${data.message ? "28px" : "32px"};">
+      ${row("Nom", data.name)}
+      ${row("Email", `<a href="mailto:${data.email}" style="color:#1a1a1a;text-decoration:underline;">${data.email}</a>`)}
+      ${row("Téléphone", `<a href="tel:${data.phone}" style="color:#1a1a1a;text-decoration:underline;">${data.phone}</a>`)}
+    </table>
 
-        <!-- Infos client -->
-        <div style="${styles.sectionTitle}">Informations du client</div>
-        <div style="${styles.row}">
-          <span style="${styles.rowLabel}">Nom</span>
-          <span style="${styles.rowValue}">${name}</span>
-        </div>
-        <div style="${styles.row}">
-          <span style="${styles.rowLabel}">Email</span>
-          <span style="${styles.rowValue}"><a href="mailto:${email}" style="color:#0891b2; text-decoration:none;">${email}</a></span>
-        </div>
-        <div style="${styles.row}">
-          <span style="${styles.rowLabel}">Téléphone</span>
-          <span style="${styles.rowValue}"><a href="tel:${phone}" style="color:#0891b2; text-decoration:none;">${phone}</a></span>
-        </div>
+    ${data.message ? `
+    <!-- MESSAGE -->
+    <p style="margin:0 0 8px;font-size:11px;color:#888888;font-weight:600;text-transform:uppercase;letter-spacing:1px;">Message du client</p>
+    <p style="margin:0 0 32px;font-size:14px;color:#444444;line-height:1.7;background:#f9f9f9;border-left:3px solid #e0e0e0;padding:14px 16px;border-radius:0 4px 4px 0;">${data.message}</p>
+    ` : ""}
 
-        ${message ? `<!-- Message --><div style="${styles.sectionTitle}">Message du client</div><div style="${styles.messageBox}">"${message}"</div>` : ""}
+    <!-- CTA -->
+    <table cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="background:#1a1a1a;border-radius:5px;">
+          <a href="${tourUrl}" style="display:inline-block;padding:12px 24px;font-size:13px;font-weight:600;color:#ffffff;text-decoration:none;letter-spacing:0.3px;">Voir le tour</a>
+        </td>
+      </tr>
+    </table>
+  `;
 
-        <!-- CTA vers le tour -->
-        <div style="text-align: center; margin-top: 28px;">
-          <a href="${tourUrl}" style="${styles.linkBtn}">Voir la page du tour</a>
-        </div>
-      </div>
-
-      <!-- Footer -->
-      <div style="${styles.footer}">
-        <p style="${styles.footerText}">
-          Notification automatique — Senegal Premium Tour<br>
-          senegalpremiumtour@gmail.com &nbsp;|&nbsp; +221 77 237 07 89
-        </p>
-      </div>
-    </div>
-  </body>
-  </html>`;
+  return baseTemplate(`Réservation — ${data.tourTitle}`, content);
 }
 
-// ─── Template : Notification Contact ─────────────────────
-function contactHTML({
-  name,
-  email,
-  phone,
-  message,
-}: {
+// ─── Template : Contact ───────────────────────────────────
+function contactHTML(data: {
   name: string;
   email: string;
   phone?: string | null;
   message: string;
 }) {
-  return `
-  <html>
-  <body style="${styles.wrapper}">
-    <div style="${styles.card}">
-      <!-- Header -->
-      <div style="${styles.header}">
-        <div style="${styles.iconCircle}">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
-          </svg>
-        </div>
-        <h1 style="${styles.headerTitle}">Nouveau Message</h1>
-        <p style="${styles.headerSub}">Un visiteur vous a envoyé un message</p>
-      </div>
+  const content = `
+    <!-- TITRE -->
+    <p style="margin:0 0 4px;font-size:11px;color:#888888;font-weight:600;text-transform:uppercase;letter-spacing:1px;">Nouveau message</p>
+    <h1 style="margin:0 0 8px;font-size:22px;font-weight:700;color:#1a1a1a;">${data.name}</h1>
+    <p style="margin:0 0 32px;font-size:14px;color:#666666;">Un visiteur vous a envoyé un message depuis le formulaire de contact.</p>
 
-      <!-- Body -->
-      <div style="${styles.body}">
-        <div style="${styles.badge}">✉️ Message de contact</div>
+    <!-- TABLE CLIENT -->
+    <p style="margin:0 0 8px;font-size:11px;color:#888888;font-weight:600;text-transform:uppercase;letter-spacing:1px;">Informations</p>
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+      ${row("Nom", data.name)}
+      ${row("Email", `<a href="mailto:${data.email}" style="color:#1a1a1a;text-decoration:underline;">${data.email}</a>`)}
+      ${data.phone ? row("Téléphone", `<a href="tel:${data.phone}" style="color:#1a1a1a;text-decoration:underline;">${data.phone}</a>`) : ""}
+    </table>
 
-        <!-- Infos client -->
-        <div style="${styles.sectionTitle}">Informations du visiteur</div>
-        <div style="${styles.row}">
-          <span style="${styles.rowLabel}">Nom</span>
-          <span style="${styles.rowValue}">${name}</span>
-        </div>
-        <div style="${styles.row}">
-          <span style="${styles.rowLabel}">Email</span>
-          <span style="${styles.rowValue}"><a href="mailto:${email}" style="color:#0891b2; text-decoration:none;">${email}</a></span>
-        </div>
-        ${phone ? `<div style="${styles.row}"><span style="${styles.rowLabel}">Téléphone</span><span style="${styles.rowValue}"><a href="tel:${phone}" style="color:#0891b2; text-decoration:none;">${phone}</a></span></div>` : ""}
+    <!-- MESSAGE -->
+    <p style="margin:0 0 8px;font-size:11px;color:#888888;font-weight:600;text-transform:uppercase;letter-spacing:1px;">Message</p>
+    <p style="margin:0 0 32px;font-size:14px;color:#444444;line-height:1.7;background:#f9f9f9;border-left:3px solid #e0e0e0;padding:14px 16px;border-radius:0 4px 4px 0;">${data.message}</p>
 
-        <!-- Message -->
-        <div style="${styles.sectionTitle}">Message</div>
-        <div style="${styles.messageBox}">"${message}"</div>
+    <!-- CTA -->
+    <table cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="background:#1a1a1a;border-radius:5px;">
+          <a href="mailto:${data.email}?subject=Re: Votre message - Senegal Premium Tour" style="display:inline-block;padding:12px 24px;font-size:13px;font-weight:600;color:#ffffff;text-decoration:none;letter-spacing:0.3px;">Répondre</a>
+        </td>
+      </tr>
+    </table>
+  `;
 
-        <!-- CTA répondre -->
-        <div style="text-align: center; margin-top: 28px;">
-          <a href="mailto:${email}?subject=Re: Votre message - Senegal Premium Tour" style="${styles.linkBtn}">Répondre à l'email</a>
-        </div>
-      </div>
-
-      <!-- Footer -->
-      <div style="${styles.footer}">
-        <p style="${styles.footerText}">
-          Notification automatique — Senegal Premium Tour<br>
-          senegalpremiumtour@gmail.com &nbsp;|&nbsp; +221 77 237 07 89
-        </p>
-      </div>
-    </div>
-  </body>
-  </html>`;
+  return baseTemplate(`Message de ${data.name}`, content);
 }
 
 // ─── Exports ──────────────────────────────────────────────
@@ -209,10 +214,10 @@ export async function sendReservationEmail(data: {
   message?: string | null;
 }) {
   try {
-    await transporter.sendMail({
-      from: FROM,
-      to: ADMIN_EMAIL,
-      subject: `[Réservation] ${data.tourTitle} — ${data.name}`,
+    await getTransporter().sendMail({
+      from: getFrom(),
+      to: getAdminEmail(),
+      subject: `[Réservation] sur SenegalPremiumTour - ${data.tourTitle} — ${data.name}`,
       html: reservationHTML(data),
     });
   } catch (err) {
@@ -227,10 +232,10 @@ export async function sendContactEmail(data: {
   message: string;
 }) {
   try {
-    await transporter.sendMail({
-      from: FROM,
-      to: ADMIN_EMAIL,
-      subject: `[Contact] ${data.name} — Nouveau message`,
+    await getTransporter().sendMail({
+      from: getFrom(),
+      to: getAdminEmail(),
+      subject: `[Contact] sur SenegalPremiumTour - ${data.name} — Nouveau message`,
       html: contactHTML(data),
     });
   } catch (err) {
