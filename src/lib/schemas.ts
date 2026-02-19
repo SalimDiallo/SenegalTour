@@ -23,3 +23,13 @@ export const reservationSchema = z.object({
 });
 
 export type ReservationInput = z.infer<typeof reservationSchema>;
+
+// ─── Review (avis tour) ───────────────────────────────────
+export const reviewSchema = z.object({
+  tourId: z.number(),
+  name: z.string().min(2),
+  rating: z.number().min(1).max(5),
+  message: z.string().min(5),
+});
+
+export type ReviewInput = z.infer<typeof reviewSchema>;

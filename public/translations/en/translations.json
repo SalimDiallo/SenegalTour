@@ -112,6 +112,32 @@
     "contactBtn": "Contact the agency",
     "reserveTitle": "Make a reservation"
    },
+  "review": {
+    "sectionTitle": "Traveler Reviews",
+    "formTitle": "Leave a Review",
+    "ratingLabel": "Your rating",
+    "namePlaceholder": "Your first name",
+    "successTitle": "Thank you for your review!",
+    "successMessage": "Your comment has been saved and is immediately visible.",
+    "addAnother": "Add another review",
+    "hideForm": "Hide form",
+    "empty": "No reviews yet for this tour. Be the first to share your experience!",
+    "totalReviews": "reviews",
+    "loading": "Loading reviews...",
+    "confirmTitle": "Confirm your review",
+    "confirmMessage": "Hello {{name}}, do you want to publish this review?",
+    "confirmSend": "Yes, publish",
+    "confirmCancel": "Cancel",
+    "basedOn": "Based on",
+    "showing": "Showing",
+    "outOf": "of",
+    "seeMore": "See more reviews",
+    "loadingMore": "Loading...",
+    "remaining": "reviews remaining",
+    "errorName": "Name must be at least 2 characters",
+    "errorRating": "Please choose a rating",
+    "errorMessage": "Message must be at least 5 characters"
+  },
   "tours":{
     "title":"All Destinations",
     "search":{

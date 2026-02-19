@@ -1,7 +1,7 @@
 "use server";
 
 import { supabase } from "./supabase";
-import { contactSchema, reservationSchema, ContactInput, ReservationInput } from "./schemas";
+import { contactSchema, reservationSchema, reviewSchema, ContactInput, ReservationInput, ReviewInput } from "./schemas";
 import { sendContactEmail, sendReservationEmail } from "./email";
 
 // ─── Contact ──────────────────────────────────────────────
@@ -71,3 +71,26 @@ export async function submitReservation(data: ReservationInput) {
 
   return { success: true, error: null };
 }
+
+// ─── Review ───────────────────────────────────────────────
+export async function submitReview(data: ReviewInput) {
+  const parsed = reviewSchema.safeParse(data);
+  if (!parsed.success) {
+    return { success: false, error: "form.errorGeneric" };
+  }
+
+  const { error } = await supabase.from("reviews").insert({
+    tour_id: parsed.data.tourId,
+    name: parsed.data.name,
+    rating: parsed.data.rating,
+    message: parsed.data.message,
+  });
+
+  if (error) {
+    console.error("[submitReview] Supabase error:", JSON.stringify(error));
+    return { success: false, error: "form.errorGeneric" };
+  }
+
+  return { success: true, error: null };
+}
+
