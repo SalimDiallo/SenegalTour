@@ -4,8 +4,22 @@ import Header from "./header";
 import Providers from "./providers";
 import Footer from "@/src/components/sections/footer/Footer";
 import { Toaster } from "react-hot-toast";
+import { Inter, Cormorant_Garamond } from "next/font/google";
 
 import { Analytics } from "@vercel/analytics/react";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-cormorant",
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Senegal Premium Tour — Agence de Tourisme au Sénégal",
@@ -19,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
       <body className="font-sans antialiased">
         <Providers>
           <Header />
