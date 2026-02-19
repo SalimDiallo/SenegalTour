@@ -113,6 +113,32 @@
     "contactBtn": "Contacter l'agence",
     "reserveTitle": "Faire une réservation"
    },
+  "review": {
+    "sectionTitle": "Avis des voyageurs",
+    "formTitle": "Laisser un avis",
+    "ratingLabel": "Votre note",
+    "namePlaceholder": "Votre prénom",
+    "successTitle": "Merci pour votre avis !",
+    "successMessage": "Votre commentaire a été enregistré et est visible immédiatement.",
+    "addAnother": "Ajouter un autre avis",
+    "hideForm": "Masquer le formulaire",
+    "empty": "Aucun avis pour ce tour. Soyez le premier à partager votre expérience !",
+    "totalReviews": "avis",
+    "loading": "Chargement des avis...",
+    "confirmTitle": "Confirmer votre avis",
+    "confirmMessage": "Bonjour {{name}}, voulez-vous publier cet avis ?",
+    "confirmSend": "Oui, publier",
+    "confirmCancel": "Annuler",
+    "basedOn": "Basé sur",
+    "showing": "Affichage de",
+    "outOf": "sur",
+    "seeMore": "Voir plus d'avis",
+    "loadingMore": "Chargement...",
+    "remaining": "avis restants",
+    "errorName": "Le prénom doit contenir au moins 2 caractères",
+    "errorRating": "Veuillez choisir une note",
+    "errorMessage": "Le message doit contenir au moins 5 caractères"
+  },
   "tours":{
     "title":"Toutes les destinations",
     "search":{

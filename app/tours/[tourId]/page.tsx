@@ -10,6 +10,7 @@ import Link from "next/link";
 import { TourCardA } from "../../../src/components/ui/TourCardA";
 import TourCircuit from "../../../src/components/sections/tours/tour/TourCircuit";
 import ReservationCTA from "../../../src/components/tours/tour/ReservationCTA";
+import ReviewSection from "../../../src/components/reviews/ReviewSection";
 
 export async function generateMetadata({
   params,
@@ -190,6 +191,9 @@ const TourDetailPage = ({ params }: { params: { tourId: string } }) => {
 
       {/* ─── CIRCUIT / ITINÉRAIRE ─── */}
       {tour.stops && tour.stops.length > 0 && <TourCircuit stops={tour.stops} />}
+
+      {/* ─── AVIS & COMMENTAIRES ─── */}
+      <ReviewSection tourId={tour.id} />
 
       {/* ─── RELATED TOURS ─── */}
       <section className="bg-gray-50/80 py-20 md:py-24">
