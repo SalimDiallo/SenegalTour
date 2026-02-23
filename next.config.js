@@ -1,9 +1,8 @@
 /** @type {import('next').NextConfig} */
 
+const isDev = process.env.NODE_ENV === 'development';
+
 module.exports = {
-  experimental: {
-    serverActions: true,
-  },
   images: {
     remotePatterns: [
       {
@@ -14,4 +13,18 @@ module.exports = {
       },
     ],
   },
+  ...(isDev && {
+    // Désactiver le cache en développement
+    headers: async () => [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "no-store, no-cache, must-revalidate, proxy-revalidate",
+          },
+        ],
+      },
+    ],
+  }),
 };

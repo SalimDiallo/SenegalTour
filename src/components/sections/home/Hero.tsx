@@ -5,7 +5,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { motion } from "framer-motion";
 import CountUp from "react-countup";
 import { useTranslation } from "react-i18next";
-import { MapPin, ArrowRight, DollarSign } from "lucide-react";
+import { MapPin, ArrowRight, DollarSign, Search } from "lucide-react";
 
 // Background slider images
 const SLIDER_IMAGES = [
@@ -14,7 +14,11 @@ const SLIDER_IMAGES = [
   "/assets/images/Dakar.jpg",
 ];
 
-const Hero = () => {
+interface HeroProps {
+  onSearch?: (title: string, price: number, city: string) => void;
+}
+
+const Hero = ({ onSearch }: HeroProps = {}) => {
   const { t } = useTranslation("en");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -22,6 +26,18 @@ const Hero = () => {
   const [bgIndex, setBgIndex] = useState(0);
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Real-time search with debounce
+  useEffect(() => {
+    if (!onSearch) return;
+
+    const timer = setTimeout(() => {
+      const priceValue = description ? parseFloat(description) : 10000;
+      onSearch(title, priceValue, city);
+    }, 300); // 300ms debounce
+
+    return () => clearTimeout(timer);
+  }, [title, description, city, onSearch]);
 
   useEffect(() => {
     intervalRef.current = setInterval(() => {
@@ -70,7 +86,7 @@ const Hero = () => {
           </motion.div>
         ))}
         {/* Overlay sobre — dégradé vertical + couche sombre */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/30 z-10" />
       </div>
 
       {/* ===== CONTENT ===== */}
@@ -140,21 +156,27 @@ const Hero = () => {
           className="w-full max-w-[960px] mx-auto px-1 relative"
           onSubmit={(e) => {
             e.preventDefault();
-            window.location.href = `tours?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}&city=${encodeURIComponent(city)}`;
+            if (onSearch) {
+              const priceValue = description ? parseFloat(description) : 10000;
+              onSearch(title, priceValue, city);
+            } else {
+              window.location.href = `tours?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}&city=${encodeURIComponent(city)}`;
+            }
           }}
           role="search"
           aria-label={t("search.ariaLabel") || "Recherche de tours"}
         >
-          <div className="bg-white rounded-xl shadow-xl shadow-black/30 overflow-hidden border border-white/10">
-            <div className="flex flex-col sm:flex-row sm:px-2 sm:py-2">
+          <div className="bg-white rounded-3xl shadow-xl shadow-black/30 overflow-hidden border border-white/10">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-3">
               {/* Tour Name */}
-              <div
-                className={`flex-1 flex items-center gap-3 px-4 py-3.5 sm:py-2.5 sm:rounded-lg border-b sm:border-b-0 transition-colors duration-150 ${
-                  focusedField === "title" ? "bg-gray-50" : ""
-                }`}
-              >
-                <div className="flex-1 min-w-0">
-                  <label className="block text-[9px] font-semibold text-gray-400 uppercase tracking-widest mb-1">
+              <div className="flex-1">
+                <div
+                  className={`flex flex-col gap-2 p-4 h-full bg-gray-50 hover:bg-gray-100 rounded-2xl transition-colors duration-150 ${
+                    focusedField === "title" ? "ring-2 ring-cyan-500" : ""
+                  }`}
+                >
+                  <label className="flex items-center gap-2 text-[10px] font-semibold text-gray-500 uppercase tracking-wide">
+                    <Search size={14} className="text-cyan-600" />
                     Recherche
                   </label>
                   <input
@@ -163,68 +185,62 @@ const Hero = () => {
                     onChange={(e) => setTitle(e.currentTarget.value)}
                     onFocus={() => setFocusedField("title")}
                     onBlur={() => setFocusedField(null)}
-                    className="w-full outline-none text-gray-800 text-sm placeholder:text-gray-300 font-normal bg-transparent"
+                    className="w-full outline-none text-gray-800 text-sm placeholder:text-gray-400 font-medium bg-transparent"
                     type="text"
-                    placeholder={t("search.title") || "Tour, activité..."}
+                    placeholder="Dakar, Gorée, Saint-Louis..."
                     name="title"
                     aria-label={t("search.title")}
                     list="hero-tour-suggestions"
                   />
                   <datalist id="hero-tour-suggestions">
-                    <option value="Excursion Dakar" />
-                    <option value="Safari Parc National" />
-                    <option value="Musée Histoire" />
+                    <option value="Dakar City Tour" />
+                    <option value="Goree Island" />
+                    <option value="Pink Lake" />
+                    <option value="Bandia Reserve" />
                   </datalist>
                 </div>
               </div>
 
-              {/* Separator */}
-              <div className="hidden sm:flex items-center">
-                <div className="w-px h-7 bg-gray-200" />
-              </div>
-
               {/* Budget */}
-              <div
-                className={`flex-1 flex items-center gap-3 px-4 py-3.5 sm:py-2.5 sm:rounded-lg border-b sm:border-b-0 transition-colors duration-150 ${
-                  focusedField === "price" ? "bg-gray-50" : ""
-                }`}
-              >
-                <DollarSign size={14} className="text-gray-400 flex-shrink-0" />
-                <div className="flex-1 min-w-0">
-                  <label className="block text-[9px] font-semibold text-gray-400 uppercase tracking-widest mb-1">
-                    Budget
+              <div className="flex-1">
+                <div
+                  className={`flex flex-col gap-2 p-4 h-full bg-gray-50 hover:bg-gray-100 rounded-2xl transition-colors duration-150 ${
+                    focusedField === "price" ? "ring-2 ring-cyan-500" : ""
+                  }`}
+                >
+                  <label className="flex items-center gap-2 text-[10px] font-semibold text-gray-500 uppercase tracking-wide">
+                    <DollarSign size={14} className="text-cyan-600" />
+                    Budget Max
                   </label>
-                  <input
-                    value={description}
-                    onChange={(e) => setDescription(e.currentTarget.value)}
-                    onFocus={() => setFocusedField("price")}
-                    onBlur={() => setFocusedField(null)}
-                    className="w-full outline-none text-gray-800 text-sm placeholder:text-gray-300 font-normal bg-transparent"
-                    type="number"
-                    min="0"
-                    inputMode="numeric"
-                    pattern="[0-9]*"
-                    placeholder={t("search.price") || "Prix max (€)"}
-                    name="description"
-                    aria-label={t("search.price")}
-                  />
+                  <div className="flex items-center gap-2">
+                    <input
+                      value={description}
+                      onChange={(e) => setDescription(e.currentTarget.value)}
+                      onFocus={() => setFocusedField("price")}
+                      onBlur={() => setFocusedField(null)}
+                      className="w-full outline-none text-gray-800 text-sm placeholder:text-gray-400 font-medium bg-transparent"
+                      type="number"
+                      min="0"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
+                      placeholder="500"
+                      name="description"
+                      aria-label={t("search.price")}
+                    />
+                    <span className="text-gray-500 text-sm font-semibold">€</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Separator */}
-              <div className="hidden sm:flex items-center">
-                <div className="w-px h-7 bg-gray-200" />
-              </div>
-
               {/* City */}
-              <div
-                className={`flex-1 flex items-center gap-3 px-4 py-3.5 sm:py-2.5 sm:rounded-lg border-b sm:border-b-0 transition-colors duration-150 ${
-                  focusedField === "city" ? "bg-gray-50" : ""
-                }`}
-              >
-                <MapPin size={14} className="text-gray-400 flex-shrink-0" />
-                <div className="flex-1 min-w-0">
-                  <label className="block text-[9px] font-semibold text-gray-400 uppercase tracking-widest mb-1">
+              <div className="flex-1">
+                <div
+                  className={`flex flex-col gap-2 p-4 h-full bg-gray-50 hover:bg-gray-100 rounded-2xl transition-colors duration-150 ${
+                    focusedField === "city" ? "ring-2 ring-cyan-500" : ""
+                  }`}
+                >
+                  <label className="flex items-center gap-2 text-[10px] font-semibold text-gray-500 uppercase tracking-wide">
+                    <MapPin size={14} className="text-cyan-600" />
                     Destination
                   </label>
                   <input
@@ -232,9 +248,9 @@ const Hero = () => {
                     onChange={(e) => setCity(e.currentTarget.value)}
                     onFocus={() => setFocusedField("city")}
                     onBlur={() => setFocusedField(null)}
-                    className="w-full outline-none text-gray-800 text-sm placeholder:text-gray-300 font-normal bg-transparent"
+                    className="w-full outline-none text-gray-800 text-sm placeholder:text-gray-400 font-medium bg-transparent"
                     type="text"
-                    placeholder={t("search.city") || "Ville, région..."}
+                    placeholder="Dakar, Thiès..."
                     name="city"
                     aria-label={t("search.city")}
                     list="hero-city-suggestions"
@@ -247,25 +263,47 @@ const Hero = () => {
                   </datalist>
                 </div>
               </div>
+            </div>
 
-              {/* Search Button */}
-              <div className="flex items-center sm:pl-1.5 sm:pr-1">
+            {/* Search info */}
+            {onSearch && (title || description || city) && (
+              <div className="px-4 py-3 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
+                <p className="text-xs text-gray-600">
+                  Recherche en temps réel activée
+                </p>
                 <button
-                  type="submit"
-                  className="w-full sm:w-auto bg-gray-900 hover:bg-gray-700 active:scale-95 transition-all duration-200 px-5 py-3.5 sm:py-0 sm:h-[48px] sm:rounded-lg flex items-center justify-center gap-2 group"
-                  aria-label="Rechercher"
+                  type="button"
+                  onClick={() => {
+                    setTitle("");
+                    setDescription("");
+                    setCity("");
+                  }}
+                  className="text-xs text-cyan-600 hover:text-cyan-700 font-medium flex items-center gap-1 transition-colors"
                 >
-                  <AiOutlineSearch size={16} className="text-white" />
-                  <span className="text-white text-xs font-medium sm:hidden">
-                    Rechercher
-                  </span>
-                  <ArrowRight
-                    size={13}
-                    className="text-white/60 hidden sm:block group-hover:translate-x-0.5 transition-transform duration-200"
-                  />
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                  Effacer
                 </button>
               </div>
-            </div>
+            )}
+
+            {!onSearch && (
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-700 hover:to-cyan-800 transition-all duration-200 px-6 py-4 flex items-center justify-center gap-2 group"
+                aria-label="Rechercher"
+              >
+                <AiOutlineSearch size={18} className="text-white" />
+                <span className="text-white text-sm font-semibold">
+                  Rechercher
+                </span>
+                <ArrowRight
+                  size={16}
+                  className="text-white group-hover:translate-x-1 transition-transform duration-200"
+                />
+              </button>
+            )}
           </div>
         </motion.form>
 
