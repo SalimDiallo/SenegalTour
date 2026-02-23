@@ -47,7 +47,7 @@ const CarrouselA = ({ tours }: { tours: TourData[] }) => {
             <Carousel.Slide key={experience.id}>
               <div className="relative rounded-xl overflow-hidden mx-2">
                 <Image
-                  src={imgTourUrl(experience.imageA ?? experience.image)}
+                  src={imgTourUrl(experience.images[0] ?? experience.image)}
                   alt={`${experience.title} — Senegal Premium Tour`}
                   width={1200}
                   height={600}
