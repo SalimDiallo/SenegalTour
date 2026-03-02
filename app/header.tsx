@@ -66,183 +66,147 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-xl shadow-[0_2px_20px_rgba(0,0,0,0.06)]"
-          : "bg-transparent"
+          ? "bg-white shadow-sm"
+          : "bg-white/95 backdrop-blur-md"
       }`}
     >
-      {/* === TOP BAR — hidden on scroll & hidden on small mobile === */}
+      {/* === TOP BAR === */}
       <div
-        className={`hidden sm:block transition-all duration-500 overflow-hidden ${
-          scrolled ? "max-h-0 opacity-0" : "max-h-9 opacity-100"
+        className={`hidden md:block border-b transition-all duration-300 ${
+          scrolled 
+            ? "border-gray-100 opacity-0 max-h-0" 
+            : "border-gray-200 opacity-100 max-h-10"
         }`}
       >
-        <div className="border-b border-white/10">
-          <div className="max-w-7xl mx-auto flex items-center justify-between px-4 lg:px-8 py-1.5">
-            <div className="flex items-center gap-4 text-[10px] text-white/50 tracking-wide">
-              <a
-                target="_blank"
-                href="https://wa.me/+221772370789"
-                className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors"
-              >
-                <FaWhatsapp size={10} className="opacity-60" />
-                <span>+221 77 237 07 89</span>
-              </a>
-              <span className="w-px h-3 bg-white/15" />
-              <a
-                target="_blank"
-                href="mailto:senegalpremiumtour@gmail.com"
-                className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors"
-              >
-                <Mail size={10} className="opacity-60" />
-                <span>senegalpremiumtour@gmail.com</span>
-              </a>
-            </div>
-            <div className="flex items-center gap-2">
-              <Link
-                target="_blank"
-                href="https://www.instagram.com/trip.senegal"
-                className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center hover:bg-pink-500/20 transition-all group"
-              >
-                <Instagram size={11} className="text-white/40 group-hover:text-pink-400 transition-colors" />
-              </Link>
-              <Link
-                target="_blank"
-                href="https://wa.me/+221772370789"
-                className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center hover:bg-green-500/20 transition-all group"
-              >
-                <FaWhatsapp size={11} className="text-white/40 group-hover:text-green-400 transition-colors" />
-              </Link>
-            </div>
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 lg:px-8 py-2">
+          <div className="flex items-center gap-6 text-xs text-gray-600">
+            <a
+              target="_blank"
+              href="tel:+221772370789"
+              className="flex items-center gap-2 hover:text-cyan-600 transition-colors"
+            >
+              <Phone size={14} />
+              <span>+221 77 237 07 89</span>
+            </a>
+            <span className="w-px h-4 bg-gray-200" />
+            <a
+              target="_blank"
+              href="mailto:senegalpremiumtour@gmail.com"
+              className="flex items-center gap-2 hover:text-cyan-600 transition-colors"
+            >
+              <Mail size={14} />
+              <span>senegalpremiumtour@gmail.com</span>
+            </a>
+          </div>
+          <div className="flex items-center gap-3">
+            <Link
+              target="_blank"
+              href="https://www.instagram.com/trip.senegal"
+              className="text-gray-400 hover:text-pink-500 transition-colors"
+              aria-label="Instagram"
+            >
+              <Instagram size={16} />
+            </Link>
+            <Link
+              target="_blank"
+              href="https://wa.me/+221772370789"
+              className="text-gray-400 hover:text-green-500 transition-colors"
+              aria-label="WhatsApp"
+            >
+              <FaWhatsapp size={16} />
+            </Link>
           </div>
         </div>
       </div>
 
       {/* === MAIN NAV === */}
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between h-12 sm:h-14 lg:h-16">
+        <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="relative z-10 flex-shrink-0 flex items-center gap-2 group">
+          <Link href="/" className="flex items-center gap-3 group">
             <Image
               src="/logo.png"
               alt="Senegal Premium Tour"
-              width={40}
-              height={30}
-              className="w-auto h-8 sm:h-9 lg:h-10 object-contain"
+              width={48}
+              height={48}
+              className="w-10 h-10 lg:w-12 lg:h-12 object-contain transition-transform group-hover:scale-105"
             />
-            <div className="hidden xs:flex flex-col">
-              <span
-                className={`font-heading text-sm sm:text-base font-semibold leading-tight transition-colors duration-500 ${
-                  scrolled ? "text-gray-800" : "text-white"
-                }`}
-              >
-                Senegal<span className="text-cyan-400"> Tour</span>
+            <div className="flex flex-col">
+              <span className="font-semibold text-gray-900 text-base lg:text-lg leading-tight">
+                Senegal Tour
               </span>
-              <span
-                className={`text-[7px] sm:text-[8px] tracking-[0.18em] uppercase font-medium transition-colors duration-500 ${
-                  scrolled ? "text-gray-400" : "text-white/40"
-                }`}
-              >
+              <span className="text-[10px] text-gray-500 uppercase tracking-wider font-medium">
                 Premium Experience
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-0.5">
+          <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`group relative px-4 py-2 text-[12px] font-medium tracking-[0.08em] uppercase transition-colors duration-300 ${
-                  scrolled
-                    ? "text-gray-500 hover:text-gray-900"
-                    : "text-white/70 hover:text-white"
-                }`}
+                className="relative px-5 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors group"
               >
                 {link.label}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[1.5px] bg-cyan-400 rounded-full transition-all duration-400 w-0 group-hover:w-3/4" />
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-cyan-500 rounded-full transition-all duration-300 w-0 group-hover:w-8" />
               </Link>
             ))}
           </nav>
 
           {/* Right actions */}
-          <div className="hidden lg:flex items-center gap-2.5">
+          <div className="hidden lg:flex items-center gap-4">
             <a
               href="tel:+221772370789"
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium transition-all duration-300 ${
-                scrolled
-                  ? "text-gray-500 hover:text-cyan-600 hover:bg-cyan-50"
-                  : "text-white/50 hover:text-white hover:bg-white/10"
-              }`}
+              className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-600 hover:text-cyan-600 transition-colors"
             >
-              <Phone size={11} />
-              <span className="hidden xl:inline">+221 77 237 07 89</span>
+              <Phone size={16} />
+              <span>+221 77 237 07 89</span>
             </a>
-            <div className={`w-px h-4 ${scrolled ? "bg-gray-200" : "bg-white/15"}`} />
-            <div className="relative flex items-center gap-1">
-              <Globe size={12} className={scrolled ? "text-gray-400" : "text-white/40"} />
+            
+            <div className="w-px h-5 bg-gray-200" />
+            
+            <div className="relative">
+              <Globe size={16} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
               <select
                 name="lg"
                 onChange={(e) => handleChange(e, isClient)}
-                className={`appearance-none bg-transparent text-[11px] font-medium cursor-pointer outline-none pr-2 ${
-                  scrolled ? "text-gray-600" : "text-white/70"
-                }`}
+                className="appearance-none bg-transparent border border-gray-200 rounded-lg pl-9 pr-8 py-1.5 text-sm text-gray-700 cursor-pointer hover:border-gray-300 focus:outline-none focus:border-cyan-500 transition-colors"
                 value={lang}
               >
-                <option value="en" className="text-gray-800">EN</option>
-                <option value="fr" className="text-gray-800">FR</option>
+                <option value="en">English</option>
+                <option value="fr">Français</option>
               </select>
+              <ChevronRight size={14} className="absolute right-2.5 top-1/2 -translate-y-1/2 rotate-90 text-gray-400 pointer-events-none" />
             </div>
-            <div className={`w-px h-4 ${scrolled ? "bg-gray-200" : "bg-white/15"}`} />
+
             <Button href="/contact" title={t("menu.contact")} />
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="lg:hidden flex items-center gap-2">
-            {/* Language switcher on mobile */}
-            <div className="flex items-center gap-2 p-1 rounded-full bg-white/10 hover:bg-white/20 transition-colors shadow-sm border border-white/15">
-        
-              <div className="relative">
-                <select
-                  name="lg-mobile"
-                  onChange={(e) => handleChange(e, isClient)}
-                  className={`appearance-none bg-transparent text-[11px] font-medium cursor-pointer outline-none px-4 py-1 pr-6 rounded-full transition-colors border-0 ${
-                    scrolled
-                      ? "text-gray-700 focus:bg-cyan-50"
-                      : "text-white/80 focus:bg-cyan-500/10"
-                  }`}
-                  value={lang}
-                  style={{ minWidth: 56 }}
-                >
-                  <option value="en" className="text-gray-800 bg-white">
-                    🇬🇧 EN
-                  </option>
-                  <option value="fr" className="text-gray-800 bg-white">
-                    🇫🇷 FR
-                  </option>
-                </select>
-                <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-cyan-400 text-xs">
-                  ▼
-                </span>
-              </div>
+          <div className="lg:hidden flex items-center gap-3">
+            <div className="relative">
+              <select
+                name="lg-mobile"
+                onChange={(e) => handleChange(e, isClient)}
+                className="appearance-none bg-gray-50 border border-gray-200 rounded-lg px-3 pr-7 py-1.5 text-xs text-gray-700 cursor-pointer focus:outline-none focus:border-cyan-500 transition-colors"
+                value={lang}
+              >
+                <option value="en">EN</option>
+                <option value="fr">FR</option>
+              </select>
+              <ChevronRight size={12} className="absolute right-2 top-1/2 -translate-y-1/2 rotate-90 text-gray-400 pointer-events-none" />
             </div>
 
             <button
-              className={`relative z-10 p-1.5 rounded-lg transition-colors duration-300 ${
-                openNav
-                  ? scrolled ? "bg-gray-100" : "bg-white/10"
-                  : "bg-transparent"
-              }`}
+              className="p-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
               onClick={() => setOpenNav(!openNav)}
               aria-label="Toggle menu"
             >
-              {openNav ? (
-                <X size={18} className={scrolled ? "text-gray-800" : "text-white"} />
-              ) : (
-                <Menu size={18} className={scrolled ? "text-gray-800" : "text-white"} />
-              )}
+              {openNav ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
@@ -252,107 +216,122 @@ export default function Header() {
       <AnimatePresence>
         {openNav && (
           <>
+            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="lg:hidden fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
+              transition={{ duration: 0.2 }}
+              className="lg:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
               onClick={() => setOpenNav(false)}
             />
+            
+            {/* Drawer */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 28, stiffness: 300 }}
-              className="lg:hidden fixed top-0 right-0 h-full w-[260px] bg-white z-50 shadow-2xl overflow-y-auto"
+              transition={{ type: "spring", damping: 30, stiffness: 300 }}
+              className="lg:hidden fixed top-0 right-0 h-full w-80 bg-white z-50 shadow-xl"
             >
-              <div className="flex items-center justify-between px-4 pt-3 pb-2.5 border-b border-gray-100">
-                <span className="font-heading text-sm font-semibold text-gray-800">Menu</span>
+              <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+                <span className="font-semibold text-gray-900">Menu</span>
                 <button
                   onClick={() => setOpenNav(false)}
-                  className="p-1.5 rounded-lg hover:bg-gray-100 transition-colors"
+                  className="p-1.5 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+                  aria-label="Close menu"
                 >
-                  <X size={14} className="text-gray-400" />
+                  <X size={20} />
                 </button>
               </div>
 
-              <div className="flex flex-col h-[calc(100%-44px)] px-4 pt-3 pb-5">
-                <nav className="flex flex-col gap-0.5">
+              <div className="flex flex-col h-[calc(100%-73px)] px-6 py-6">
+                <nav className="flex flex-col gap-1">
                   {navLinks.map((link, idx) => (
                     <motion.div
                       key={link.href}
-                      initial={{ opacity: 0, x: 12 }}
+                      initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.06 + idx * 0.05 }}
+                      transition={{ delay: idx * 0.05 }}
                     >
                       <Link
                         href={link.href}
-                        className="group flex items-center justify-between text-gray-600 hover:text-cyan-600 text-sm font-medium py-2.5 px-2.5 rounded-lg hover:bg-cyan-50/50 transition-all duration-300"
+                        className="flex items-center justify-between text-gray-700 hover:text-cyan-600 hover:bg-gray-50 px-4 py-3 rounded-lg transition-all group"
                         onClick={() => setOpenNav(false)}
                       >
-                        {link.label}
-                        <ChevronRight size={12} className="text-gray-200 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all duration-300" />
+                        <span className="font-medium">{link.label}</span>
+                        <ChevronRight
+                          size={16}
+                          className="text-gray-300 group-hover:text-cyan-600 group-hover:translate-x-1 transition-all"
+                        />
                       </Link>
                     </motion.div>
                   ))}
                 </nav>
 
-                <div className="my-3 h-px bg-gray-100" />
+                <div className="my-6 h-px bg-gray-100" />
 
-                <motion.a
-                  href="tel:+221772370789"
-                  initial={{ opacity: 0, x: 12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.18 }}
-                  className="flex items-center gap-2 text-xs text-gray-500 px-2.5 py-2 rounded-lg hover:bg-gray-50 transition-colors"
-                >
-                  <div className="w-6 h-6 rounded-md bg-cyan-50 flex items-center justify-center">
-                    <Phone size={11} className="text-cyan-500" />
-                  </div>
-                  +221 77 237 07 89
-                </motion.a>
-
-                <motion.a
-                  href="mailto:senegalpremiumtour@gmail.com"
-                  initial={{ opacity: 0, x: 12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.22 }}
-                  className="flex items-center gap-2 text-xs text-gray-500 px-2.5 py-2 rounded-lg hover:bg-gray-50 transition-colors mt-0.5"
-                >
-                  <div className="w-6 h-6 rounded-md bg-gray-50 flex items-center justify-center">
-                    <Mail size={11} className="text-gray-400" />
-                  </div>
-                  <span className="truncate">senegalpremiumtour@gmail.com</span>
-                </motion.a>
-
+                {/* Contact Info */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.26 }}
-                  className="flex items-center gap-2 mt-3 px-2.5"
+                  transition={{ delay: 0.15 }}
+                  className="space-y-3"
+                >
+                  <a
+                    href="tel:+221772370789"
+                    className="flex items-center gap-3 text-sm text-gray-600 hover:text-cyan-600 px-4 py-2.5 rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    <div className="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
+                      <Phone size={16} className="text-gray-600" />
+                    </div>
+                    +221 77 237 07 89
+                  </a>
+
+                  <a
+                    href="mailto:senegalpremiumtour@gmail.com"
+                    className="flex items-center gap-3 text-sm text-gray-600 hover:text-cyan-600 px-4 py-2.5 rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    <div className="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
+                      <Mail size={16} className="text-gray-600" />
+                    </div>
+                    <span className="truncate text-xs">
+                      senegalpremiumtour@gmail.com
+                    </span>
+                  </a>
+                </motion.div>
+
+                {/* Social links */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="flex items-center gap-3 mt-6 px-4"
                 >
                   <Link
                     target="_blank"
                     href="https://www.instagram.com/trip.senegal"
-                    className="w-7 h-7 rounded-lg bg-gray-50 flex items-center justify-center hover:bg-pink-50 transition-colors group"
+                    className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center hover:bg-pink-50 text-gray-600 hover:text-pink-500 transition-all"
+                    aria-label="Instagram"
                   >
-                    <Instagram size={12} className="text-gray-400 group-hover:text-pink-500 transition-colors" />
+                    <Instagram size={18} />
                   </Link>
                   <Link
                     target="_blank"
                     href="https://wa.me/+221772370789"
-                    className="w-7 h-7 rounded-lg bg-gray-50 flex items-center justify-center hover:bg-green-50 transition-colors group"
+                    className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center hover:bg-green-50 text-gray-600 hover:text-green-500 transition-all"
+                    aria-label="WhatsApp"
                   >
-                    <FaWhatsapp size={12} className="text-gray-400 group-hover:text-green-500 transition-colors" />
+                    <FaWhatsapp size={18} />
                   </Link>
                 </motion.div>
 
+                {/* Contact button */}
                 <motion.div
-                  initial={{ opacity: 0, y: 6 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                  className="mt-auto pt-3"
+                  transition={{ delay: 0.25 }}
+                  className="mt-auto pt-6"
                 >
                   <Button href="/contact" title={t("menu.contact")} />
                 </motion.div>
