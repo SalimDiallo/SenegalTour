@@ -85,7 +85,7 @@ const TourDetailPage = async ({ params }: { params: Promise<{ tourId: string }> 
         {/* Back button */}
         <Link
           href="/tours"
-          className="absolute top-24 left-4 md:left-8 z-10 inline-flex items-center gap-2 text-white/80 hover:text-white text-xs font-medium transition-all duration-300 bg-white/10 hover:bg-white/20 backdrop-blur-md px-4 py-2.5 rounded-full border border-white/20 hover:border-white/30 shadow-lg hover:shadow-xl"
+          className="absolute top-32 left-4 md:left-8 z-10 inline-flex items-center gap-2 text-white/80 hover:text-white text-xs font-medium transition-all duration-300 bg-white/10 hover:bg-white/20 backdrop-blur-md px-4 py-2.5 rounded-full border border-white/20 hover:border-white/30 shadow-lg hover:shadow-xl"
         >
           <ArrowLeft size={13} />
           Destinations
