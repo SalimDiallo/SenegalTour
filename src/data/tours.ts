@@ -32,14 +32,14 @@ export const toursData: TourData[] = [
     title: "Dakar City Tour",
     description:
       "A visit to the different historical monument sites of Dakar with an experienced guide and an air-conditioned car. We offer you a private tour, tailor-made for you.",
-    image: "dakar.jpeg",
+    image: "dakarhome.jpeg",
     city: "Dakar",
     country: "Senegal",
     address:
       "Monument of African Renaissance, Cathedral of the African Remembrance, the Kermel Market, Mosquee of Massalikoul Jinan, Tilene Market, fishing village of Ouakam, the Soumbedioum African Arts Market",
     duration: "4",
     price: "125",
-    images: ["dakar1.jpeg", "dakar3.jpeg", "dakar4.jpeg", "dakar5.jpeg", "dakar6.jpeg"],
+    images: ["dakar.jpeg","dakar1.jpeg", "dakar3.jpeg", "dakar4.jpeg", "dakar5.jpeg", "dakar6.jpeg"],
     titlefr: "Visite de la ville de Dakar",
     descriptionfr:
       "Une visite des différents sites monuments historiques de Dakar avec un guide expérimenté et une voiture climatisée. Nous vous proposons une visite privée, taillée sur mesure.",
