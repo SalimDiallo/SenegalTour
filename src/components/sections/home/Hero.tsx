@@ -1,11 +1,11 @@
 "use client";
-import Image from "next/image";
-import React, { ReactNode, useEffect, useRef, useState, useCallback } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
 import { motion } from "framer-motion";
+import { ArrowRight, Camera, DollarSign, MapPin, Search, Star, Users } from "lucide-react";
+import Image from "next/image";
+import React, { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import CountUp from "react-countup";
 import { useTranslation } from "react-i18next";
-import { MapPin, ArrowRight, DollarSign, Search, Star, Users, Camera } from "lucide-react";
+import { AiOutlineSearch } from "react-icons/ai";
 
 // Background slider images
 const SLIDER_IMAGES = [
@@ -87,10 +87,11 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
 
         {/* Premium overlay — cinematic gradient */}
         <div className="absolute inset-0 z-10" style={{
-          background: "linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.10) 55%, rgba(0,0,0,0.50) 100%)"
+          background: "linear-gradient(180deg, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0.20) 35%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.55) 100%)"
         }} />
         {/* Subtle warm tint for travel feel */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-br from-cyan-900/10 via-transparent to-amber-900/5" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-br from-primary/8 via-transparent to-amber-900/8" />
+        {/* le vert par primary (above: from-primary/8 instead of from-emerald-900/8) */}
       </div>
 
       {/* ===== CONTENT ===== */}
@@ -100,11 +101,11 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="mb-5 sm:mb-6"
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mb-6 sm:mb-7"
         >
-          <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/15 rounded-full px-4 py-1.5 text-[10px] sm:text-[11px] tracking-[0.2em] uppercase text-white/80 font-medium">
-            <Star size={12} className="text-amber-400" fill="currentColor" />
+          <span className="inline-flex items-center gap-2.5 border border-white/20 rounded-full px-5 py-2 text-[10px] sm:text-[11px] tracking-[0.15em] uppercase text-white/75 font-medium backdrop-blur-sm">
+            <Star size={11} className="text-amber-300/80" fill="currentColor" />
             Agence de tourisme — Sénégal
           </span>
         </motion.div>
@@ -113,9 +114,9 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
         <motion.h1
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="font-heading font-semibold leading-[1.08] mb-4 sm:mb-5 text-balance max-w-4xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4.2rem]"
-          style={{ textShadow: "0 2px 20px rgba(0,0,0,0.15)" }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="font-heading font-semibold leading-[1.12] mb-5 sm:mb-6 text-balance max-w-4xl text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem]"
+          style={{ textShadow: "0 3px 25px rgba(0,0,0,0.25)" }}
         >
           {t("home.welcome") as ReactNode}{" "}
           <span className="relative inline-block" style={{ isolation: "isolate" }}>
@@ -123,7 +124,7 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
               className="relative z-10"
               style={{
                 backgroundImage:
-                  "linear-gradient(90deg, #00853F 33%, #FDEF42 33%, #FDEF42 66%, #E31B23 66%)",
+                  "linear-gradient(90deg, #07C500 33%, #FDEF42 33%, #FDEF42 66%, #E31B23 66%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -133,7 +134,7 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
             </span>
             <span
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none z-20"
-              style={{ color: "#000000", fontSize: "0.35em", lineHeight: 1 }}
+              style={{ color: "#FFFFFF", fontSize: "0.35em", lineHeight: 1 }}
             >
               ★
             </span>
@@ -144,9 +145,9 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mb-8 sm:mb-10 text-xs sm:text-sm md:text-base font-light max-w-lg mx-auto text-white/65 leading-relaxed"
-          style={{ textShadow: "0 1px 6px rgba(0,0,0,0.1)" }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mb-10 sm:mb-12 text-sm sm:text-base md:text-lg font-light max-w-2xl mx-auto text-white/70 leading-relaxed"
+          style={{ textShadow: "0 2px 12px rgba(0,0,0,0.2)" }}
         >
           {t("home.subtitle") ??
             "Explorez la magie, la culture et la diversité du Sénégal à travers des expériences inoubliables."}
@@ -156,7 +157,7 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
         <motion.form
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
           className="w-full max-w-[920px] mx-auto relative"
           onSubmit={(e) => {
             e.preventDefault();
@@ -178,13 +179,13 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
                 <div
                   className={`flex flex-col gap-1.5 p-4 lg:p-5 transition-colors duration-150 cursor-text ${
                     focusedField === "title"
-                      ? "bg-cyan-50/40"
-                      : "hover:bg-gray-50/60"
+                      ? "bg-amber-50/30"
+                      : "hover:bg-gray-50/50"
                   }`}
                   onClick={() => document.getElementById("search-title")?.focus()}
                 >
-                  <label className="flex items-center gap-1.5 text-[10px] font-semibold text-gray-400 uppercase tracking-[0.12em]">
-                    <Search size={12} className="text-cyan-500" />
+                  <label className="flex items-center gap-1.5 text-[10px] font-semibold text-gray-500 uppercase tracking-[0.12em]">
+                    <Search size={12} className="text-amber-600" />
                     Recherche
                   </label>
                   <input
@@ -213,13 +214,13 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
                 <div
                   className={`flex flex-col gap-1.5 p-4 lg:p-5 transition-colors duration-150 cursor-text ${
                     focusedField === "price"
-                      ? "bg-cyan-50/40"
-                      : "hover:bg-gray-50/60"
+                      ? "bg-amber-50/30"
+                      : "hover:bg-gray-50/50"
                   }`}
                   onClick={() => document.getElementById("search-price")?.focus()}
                 >
-                  <label className="flex items-center gap-1.5 text-[10px] font-semibold text-gray-400 uppercase tracking-[0.12em]">
-                    <DollarSign size={12} className="text-cyan-500" />
+                  <label className="flex items-center gap-1.5 text-[10px] font-semibold text-gray-500 uppercase tracking-[0.12em]">
+                    <DollarSign size={12} className="text-amber-600" />
                     Budget Max
                   </label>
                   <div className="flex items-center gap-2">
@@ -246,13 +247,13 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
                 <div
                   className={`flex flex-col gap-1.5 p-4 lg:p-5 transition-colors duration-150 cursor-text ${
                     focusedField === "city"
-                      ? "bg-cyan-50/40"
-                      : "hover:bg-gray-50/60"
+                      ? "bg-amber-50/30"
+                      : "hover:bg-gray-50/50"
                   }`}
                   onClick={() => document.getElementById("search-city")?.focus()}
                 >
-                  <label className="flex items-center gap-1.5 text-[10px] font-semibold text-gray-400 uppercase tracking-[0.12em]">
-                    <MapPin size={12} className="text-cyan-500" />
+                  <label className="flex items-center gap-1.5 text-[10px] font-semibold text-gray-500 uppercase tracking-[0.12em]">
+                    <MapPin size={12} className="text-amber-600" />
                     Destination
                   </label>
                   <input
@@ -290,7 +291,7 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
                       setDescription("");
                       setCity("");
                     }}
-                    className="text-xs text-cyan-600 hover:text-cyan-700 font-medium flex items-center gap-1 transition-colors"
+                    className="text-xs text-amber-700 hover:text-amber-800 font-medium flex items-center gap-1 transition-colors"
                   >
                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -304,7 +305,7 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
               {!onSearch && (
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 transition-all duration-300 px-6 py-3.5 flex items-center justify-center gap-2.5 group"
+                  className="w-full bg-gradient-to-r from-primary to-primary hover:from-primary hover:to-primary transition-all duration-300 px-6 py-3.5 flex items-center justify-center gap-2.5 group shadow-md shadow-primary/20"
                   aria-label="Rechercher"
                 >
                   <AiOutlineSearch size={17} className="text-white" />
@@ -328,11 +329,11 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
                 <div
                   className={`flex items-center gap-3 px-3.5 py-3 rounded-xl transition-colors duration-150 ${
                     focusedField === "title"
-                      ? "bg-cyan-50 ring-1 ring-cyan-200"
+                      ? "bg-amber-50 ring-1 ring-amber-200/50"
                       : "bg-gray-50"
                   }`}
                 >
-                  <Search size={16} className="text-cyan-500 shrink-0" />
+                  <Search size={16} className="text-amber-600 shrink-0" />
                   <input
                     autoComplete="on"
                     value={title}
@@ -359,11 +360,11 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
                   <div
                     className={`flex items-center gap-2 px-3 py-3 rounded-xl transition-colors duration-150 ${
                       focusedField === "price"
-                        ? "bg-cyan-50 ring-1 ring-cyan-200"
+                        ? "bg-amber-50 ring-1 ring-amber-200/50"
                         : "bg-gray-50"
                     }`}
                   >
-                    <DollarSign size={15} className="text-cyan-500 shrink-0" />
+                    <DollarSign size={15} className="text-amber-600 shrink-0" />
                     <input
                       value={description}
                       onChange={(e) => setDescription(e.currentTarget.value)}
@@ -381,11 +382,11 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
                   <div
                     className={`flex items-center gap-2 px-3 py-3 rounded-xl transition-colors duration-150 ${
                       focusedField === "city"
-                        ? "bg-cyan-50 ring-1 ring-cyan-200"
+                        ? "bg-amber-50 ring-1 ring-amber-200/50"
                         : "bg-gray-50"
                     }`}
                   >
-                    <MapPin size={15} className="text-cyan-500 shrink-0" />
+                    <MapPin size={15} className="text-amber-600 shrink-0" />
                     <input
                       value={city}
                       onChange={(e) => setCity(e.currentTarget.value)}
@@ -419,7 +420,7 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
                       setDescription("");
                       setCity("");
                     }}
-                    className="text-[11px] text-cyan-600 hover:text-cyan-700 font-medium transition-colors"
+                    className="text-[11px] text-amber-700 hover:text-amber-800 font-medium transition-colors"
                   >
                     Effacer
                   </button>
@@ -430,7 +431,7 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
               {!onSearch && (
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 transition-all duration-300 px-5 py-3.5 flex items-center justify-center gap-2 group"
+                  className="w-full bg-gradient-to-r from-primary to-primary hover:from-primary hover:to-primary transition-all duration-300 px-5 py-3.5 flex items-center justify-center gap-2 group shadow-md shadow-primary/20"
                   aria-label="Rechercher"
                 >
                   <AiOutlineSearch size={16} className="text-white" />
@@ -451,8 +452,8 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1 }}
-          className="flex items-center justify-center gap-6 sm:gap-10 lg:gap-14 mt-9 sm:mt-12"
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="flex items-center justify-center gap-6 sm:gap-10 lg:gap-14 mt-10 sm:mt-14"
         >
           {[
             {
@@ -460,21 +461,21 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
               start: 8800,
               label: t("home.visitor"),
               suffix: "+",
-              icon: <Users size={14} className="text-cyan-400" />,
+              icon: <Users size={13} className="text-white/50" />,
             },
             {
               end: 2000,
               start: 1950,
               label: t("home.attraction"),
               suffix: "+",
-              icon: <Camera size={14} className="text-cyan-400" />,
+              icon: <Camera size={13} className="text-white/50" />,
             },
             {
               end: 28,
               start: 0,
               label: t("home.culture"),
               suffix: "+",
-              icon: <Star size={14} className="text-amber-400" />,
+              icon: <Star size={13} className="text-amber-300/60" />,
             },
           ].map((stat, i) => (
             <React.Fragment key={i}>
@@ -482,16 +483,16 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
                 <div className="w-px h-8 sm:h-10 bg-white/15 rounded-full" />
               )}
               <div className="flex flex-col items-center cursor-default group">
-                <div className="flex items-center gap-1.5 mb-0.5">
-                  <span className="hidden sm:block opacity-70 group-hover:opacity-100 transition-opacity">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="hidden sm:block opacity-60 group-hover:opacity-80 transition-opacity">
                     {stat.icon}
                   </span>
-                  <span className="text-white font-bold text-lg sm:text-xl lg:text-2xl tabular-nums tracking-tight">
-                    <CountUp start={stat.start} end={stat.end} duration={3} />
-                    <span className="text-white/60 font-semibold">{stat.suffix}</span>
+                  <span className="text-white font-semibold text-lg sm:text-xl lg:text-2xl tabular-nums tracking-tight">
+                    <CountUp start={stat.start} end={stat.end} duration={2.5} />
+                    <span className="text-white/50 font-medium ml-0.5">{stat.suffix}</span>
                   </span>
                 </div>
-                <span className="text-[9px] sm:text-[10px] text-white/45 font-medium tracking-[0.14em] uppercase">
+                <span className="text-[9px] sm:text-[10px] text-white/50 font-medium tracking-[0.12em] uppercase">
                   {stat.label}
                 </span>
               </div>
@@ -517,7 +518,6 @@ const Hero = ({ onSearch }: HeroProps = {}) => {
       </div>
 
       {/* Bottom gradient fade for smooth transition to next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent z-20 pointer-events-none" />
     </section>
   );
 };
