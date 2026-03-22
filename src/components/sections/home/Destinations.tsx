@@ -1,13 +1,13 @@
-import Image from "next/image";
-import React from "react";
-import { imgTourUrl } from "../../../config/siteConfig";
-import Link from "next/link";
-import TitleSection from "../../ui/TitleSection";
-import { TourData } from "../../../data/tours";
 import { ArrowUpRight, MapPin } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { imgTourUrl } from "../../../config/siteConfig";
+import { TourData } from "../../../data/tours";
+import ClientComponent from "../../ClientComponent";
+import TitleSection from "../../ui/TitleSection";
 
 const Destinations = ({ tours }: { tours: TourData[] }) => {
-  const featured = tours.slice(4, 8);
+  const featured = tours.slice(0, 4);
 
   return (
     <section className="py-20 md:py-28 bg-white">
@@ -38,10 +38,11 @@ const Destinations = ({ tours }: { tours: TourData[] }) => {
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <div className="flex items-center gap-1.5 mb-1">
                   <MapPin size={13} className="text-cyan-400" />
-                  <h3 className="text-white text-lg font-bold">{tour.city}</h3>
+                  <h3 className="text-white text-lg font-bold">
+                  <ClientComponent fr={tour.titlefr} en={tour.title} /></h3>
                 </div>
                 <p className="text-white/50 text-xs mt-1 line-clamp-1 transition-all duration-300 max-h-0 group-hover:max-h-10 overflow-hidden">
-                  {tour.description}
+                <ClientComponent en={tour.description} fr={tour.descriptionfr} />
                 </p>
               </div>
 

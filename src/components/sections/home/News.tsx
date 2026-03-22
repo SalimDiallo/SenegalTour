@@ -1,7 +1,6 @@
-import React from "react";
-import { TourCardB } from "../../ui/TourCardB";
-import TitleSection from "../../ui/TitleSection";
 import { TourData } from "../../../data/tours";
+import TitleSection from "../../ui/TitleSection";
+import { TourCardA } from "../../ui/TourCardA";
 
 export const News = ({ tours }: { tours: TourData[] }) => {
   return (
@@ -13,7 +12,7 @@ export const News = ({ tours }: { tours: TourData[] }) => {
         />
         <div className="grid max-sm:grid-cols-1 max-md:grid-cols-2 grid-cols-3 gap-5">
           {tours.slice(tours.length - 4, tours.length - 1).map((tour) => (
-            <TourCardB key={tour.id} {...tour} />
+            <TourCardA key={tour.id} {...tour} />
           ))}
         </div>
       </div>
